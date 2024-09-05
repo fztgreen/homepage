@@ -1,4 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-theme: mat.define-theme((
+ color: (
+    theme-type: light,
+    primary: mat.$spring-green-palette,
+  ),
+));
+
+html {
+  @include mat.all-component-themes($my-theme);
+}
+
+
 body {
     background-color: gray;
 }

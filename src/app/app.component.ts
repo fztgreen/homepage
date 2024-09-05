@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterOutlet } from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
+import { DetailsComponent } from './details/details.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatTabsModule, RouterOutlet, MatListModule],
+  imports: [MatTabsModule, RouterOutlet, DetailsComponent, ContactComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
