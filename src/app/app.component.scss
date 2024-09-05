@@ -1,0 +1,12 @@
+.app-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.headshot {
+    max-height: 10em;
+    max-width: 10em;
+    border-radius: 5%;
+}
