@@ -1,0 +1,1 @@
+ng deploy --repo=https://github.com/fztgreen/homepage.git --base-href=/homepage/
