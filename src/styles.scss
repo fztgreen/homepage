@@ -12,7 +12,6 @@ $my-theme: mat.define-theme((
 
 html {
   @include mat.all-component-themes($my-theme);
-  @include mat.core-theme($my-theme);
 }
 
 body {
