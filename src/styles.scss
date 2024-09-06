@@ -14,3 +14,8 @@ html {
   @include mat.all-component-themes($my-theme);
   @include mat.core-theme($my-theme);
 }
+
+body {
+  margin-top: 0;
+  margin-bottom: 0;
+}
