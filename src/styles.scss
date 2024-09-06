@@ -5,16 +5,12 @@
 
 $my-theme: mat.define-theme((
  color: (
-    theme-type: light,
+    theme-type: dark,
     primary: mat.$spring-green-palette,
   ),
 ));
 
 html {
   @include mat.all-component-themes($my-theme);
-}
-
-
-body {
-    background-color: gray;
+  @include mat.core-theme($my-theme);
 }
