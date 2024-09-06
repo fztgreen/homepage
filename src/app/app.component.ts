@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
 import { RouterOutlet } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
-import { DetailsComponent } from './details/details.component';
+import { NavigationComponent } from "./navigation/navigation.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatTabsModule, RouterOutlet, DetailsComponent, ContactComponent],
+  imports: [RouterOutlet, NavigationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
