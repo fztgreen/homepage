@@ -1,13 +1,8 @@
-<mat-tab-group
-  class="navigation-tabs"
-  [selectedIndex]="selected"
-  (swipeleft)="swipe($event.type)"
-  (swiperight)="swipe($event.type)"
->
+<mat-tab-group class="navigation-tabs" [selectedIndex]="selected">
   <mat-tab label="Home" class="tab">
-    <app-details></app-details>
+    <app-details (swipeEmitter)="swipe($event)"></app-details>
   </mat-tab>
   <mat-tab label="Contact" class="tab">
-    <app-contact></app-contact>
+    <app-contact (swipeEmitter)="swipe($event)"></app-contact>
   </mat-tab>
 </mat-tab-group>

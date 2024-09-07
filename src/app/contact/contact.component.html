@@ -1,8 +1,13 @@
-<div class="app-page">
-    <h1>Contact Details</h1>
-    <h3><a href="mailto:zachary.greenfield@veteransunited.com">Email</a></h3>
-    <h3><a href="https://www.linkedin.com/in/zacharygreenfieldf/">LinkedIn</a></h3>
-    <h3><a href="https://github.com/fztgreen/">Github</a></h3>
-    <h3 class="links">Like my site? <a href="https://buymeacoffee.com/fztgreen">Buy me a coffee!</a><mat-icon
-            svgIcon="bmc"></mat-icon></h3>
+<div class="app-page" (swipeleft)="notifySwipe($event.type)" (swiperight)="notifySwipe($event.type)" >
+  <h1>Contact Details</h1>
+  <h3><a href="mailto:zachary.greenfield@veteransunited.com">Email</a></h3>
+  <h3>
+    <a href="https://www.linkedin.com/in/zacharygreenfieldf/">LinkedIn</a>
+  </h3>
+  <h3><a href="https://github.com/fztgreen/">Github</a></h3>
+  <h3 class="links">
+    Like my site?
+    <a href="https://buymeacoffee.com/fztgreen">Buy me a coffee!</a
+    ><mat-icon svgIcon="bmc"></mat-icon>
+  </h3>
 </div>

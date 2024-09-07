@@ -28,18 +28,13 @@ export class NavigationComponent implements AfterViewInit {
   }
 
   swipe(eType: any) {
-    debugger;
-    console.log(eType);
     if (eType === this.SWIPE_ACTION.RIGHT && this.selected > 0) {
-      console.log('movin left');
       this.selected--;
     } else if (
       eType === this.SWIPE_ACTION.LEFT &&
       this.selected < this.tab_num - 1
     ) {
-      console.log('movin right');
       this.selected++;
     }
-    console.log(this.selected);
   }
 }

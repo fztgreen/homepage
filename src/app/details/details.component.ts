@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 
@@ -9,4 +9,11 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
-export class DetailsComponent {}
+export class DetailsComponent {
+  @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();
+
+  notifySwipe(swipe: string)
+  {
+    this.swipeEmitter.emit(swipe);
+  }
+}
