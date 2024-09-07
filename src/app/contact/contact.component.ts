@@ -7,13 +7,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   standalone: true,
   imports: [MatIconModule],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
   constructor() {
     const iconRegistry = inject(MatIconRegistry);
     const sanitizer = inject(DomSanitizer);
 
-    iconRegistry.addSvgIcon('bmc', sanitizer.bypassSecurityTrustResourceUrl('bmc-brand-icon.svg'));
+    iconRegistry.addSvgIcon(
+      'bmc',
+      sanitizer.bypassSecurityTrustResourceUrl('bmc-brand-icon.svg')
+    );
   }
 }

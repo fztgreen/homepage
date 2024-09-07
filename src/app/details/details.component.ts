@@ -7,8 +7,6 @@ import { MatListModule } from '@angular/material/list';
   standalone: true,
   imports: [MatListModule, MatDividerModule],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.scss'
+  styleUrl: './details.component.scss',
 })
-export class DetailsComponent {
-
-}
+export class DetailsComponent {}

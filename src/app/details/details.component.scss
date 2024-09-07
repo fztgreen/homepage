@@ -1,24 +1,24 @@
 .app-page {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
 }
 
 .headshot {
-    max-height: 10em;
-    max-width: 10em;
-    border-radius: 25%;
+  max-height: 10em;
+  max-width: 10em;
+  border-radius: 25%;
 }
 
 .divider {
-    width: 90%;
-    height: .1em;
-    margin-top: 2em;
-    margin-bottom: 2em;
+  width: 90%;
+  height: 0.1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .centered-text {
-    margin: 2em;
-    text-align: center;
+  margin: 2em;
+  text-align: center;
 }
