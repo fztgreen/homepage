@@ -3,4 +3,5 @@
   align-items: center;
   flex-direction: column;
   height: 90vh;
+  touch-action: pan-y !important;
 }

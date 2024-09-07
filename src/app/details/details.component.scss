@@ -3,6 +3,7 @@
   align-items: center;
   flex-direction: column;
   height: auto;
+  touch-action: pan-y !important;
 }
 
 .headshot {

@@ -12,8 +12,7 @@ import { MatListModule } from '@angular/material/list';
 export class DetailsComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();
 
-  notifySwipe(swipe: string)
-  {
+  notifySwipe(swipe: string) {
     this.swipeEmitter.emit(swipe);
   }
 }
