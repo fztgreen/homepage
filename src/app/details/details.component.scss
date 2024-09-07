@@ -21,5 +21,13 @@
 
 .centered-text {
   margin: 2em;
-  text-align: center;
+  text-align: left;
+  text-indent: 1em;
+  font-weight: 100;
+}
+
+.skills {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
 }

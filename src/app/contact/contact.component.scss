@@ -5,3 +5,16 @@
   height: 90vh;
   touch-action: pan-y !important;
 }
+
+.headshot {
+  max-height: 10em;
+  max-width: 10em;
+  border-radius: 25%;
+}
+
+.divider {
+  width: 90%;
+  height: 0.1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
