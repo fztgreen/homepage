@@ -1,0 +1,15 @@
+.app-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+  touch-action: pan-y !important;
+}
+
+.paragraph {
+    text-indent: 1em;
+}
+
+.sign-off {
+    text-align: right;
+}

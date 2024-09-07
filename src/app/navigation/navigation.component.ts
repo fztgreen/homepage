@@ -8,11 +8,12 @@ import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import 'hammerjs';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
+import { BlogComponent } from "../blog/blog.component";
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [MatTabsModule, DetailsComponent, ContactComponent],
+  imports: [MatTabsModule, DetailsComponent, ContactComponent, BlogComponent],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })
