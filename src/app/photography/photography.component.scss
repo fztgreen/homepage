@@ -1,12 +1,22 @@
 .app-page {
   display: flex;
-  width: 99vw;
   height: 100%;
   justify-content: center;
   flex-direction: column;
 }
 
 .photo-site {
-  width: 99vw;
-  height: 100vh;
+    height: 100vh;
+}
+
+@media (max-width: 570px) {
+  .photo-site {
+    width: 95vw;
+  }
+}
+
+@media (min-width: 571px) {
+  .photo-site {
+    width: 99vw;
+  }
 }
