@@ -18,3 +18,32 @@
   margin-top: 2em;
   margin-bottom: 2em;
 }
+
+.submit-span {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-right: 2em;
+}
+
+.submit-button {
+  width: 80%;
+}
+
+.message-field {
+  width: 90%;
+}
+
+.name-field {
+  width: 35%;
+}
+
+.card-form {
+  width: 60%;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 1em;
+  margin-top: 1em;
+}

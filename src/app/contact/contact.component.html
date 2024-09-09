@@ -6,7 +6,6 @@
   <h1>Zachary Greenfield</h1>
   <img
     class="headshot"
-    class="headshot"
     src="https://media.licdn.com/dms/image/v2/D5603AQE_kg-Fj0xpoQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1698710469812?e=1730937600&v=beta&t=Hvb__5FFSrAabAQgUPq58e3JSrRYNqmRJ6jrMAs2tRg"
   />
   <mat-divider class="divider"></mat-divider>
@@ -16,9 +15,37 @@
     <a href="https://www.linkedin.com/in/zacharygreenfieldf/">LinkedIn</a>
   </h3>
   <h3><a href="https://github.com/fztgreen/">Github</a></h3>
+
+  <mat-card class="card-form">
+    <div role="group" [formGroup]="contactForm">
+      <mat-form-field class="name-field">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="John Doe" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="message-field">
+        <mat-label>Message</mat-label>
+        <textarea
+          matInput
+          placeholder="Your work is admirable!"
+          formControlName="message"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <span class="submit-span">
+      <button
+        mat-raised-button
+        (click)="openConfirmation('Message Sent!', 'OK')"
+        class="submit-button"
+      >
+        Submit
+      </button>
+    </span>
+  </mat-card>
+  <mat-divider class="divider"></mat-divider>
   <h3 class="links">
     Like my site?
-    <a href="https://buymeacoffee.com/fztgreen">Buy me a coffee!</a
-    ><mat-icon svgIcon="bmc"></mat-icon>
+    <a href="https://buymeacoffee.com/fztgreen"
+      >Buy me a coffee!<mat-icon svgIcon="bmc"></mat-icon
+    ></a>
   </h3>
 </div>

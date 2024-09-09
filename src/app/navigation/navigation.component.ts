@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import 'hammerjs';
+import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
-import { BlogComponent } from "../blog/blog.component";
 
 @Component({
   selector: 'app-navigation',
