@@ -1,4 +1,4 @@
-<mat-tab-group class="navigation-tabs" [selectedIndex]="selected">
+<mat-tab-group class="navigation-tabs" [(selectedIndex)]="selected">
   <mat-tab label="Home" class="tab">
     <app-details (swipeEmitter)="swipe($event)"></app-details>
   </mat-tab>
