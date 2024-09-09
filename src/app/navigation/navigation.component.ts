@@ -9,11 +9,18 @@ import 'hammerjs';
 import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
+import { PhotographyComponent } from '../photography/photography.component';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [MatTabsModule, DetailsComponent, ContactComponent, BlogComponent],
+  imports: [
+    MatTabsModule,
+    DetailsComponent,
+    ContactComponent,
+    BlogComponent,
+    PhotographyComponent,
+  ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })
