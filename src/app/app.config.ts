@@ -8,6 +8,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { HammerModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
+import * as Hammer from 'hammerjs';
+
+Hammer.defaults.cssProps.userSelect = '';
 
 export const appConfig: ApplicationConfig = {
   providers: [
