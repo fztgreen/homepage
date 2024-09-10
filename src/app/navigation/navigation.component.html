@@ -1,14 +1,14 @@
 <mat-tab-group class="navigation-tabs" [(selectedIndex)]="selected">
-  <mat-tab label="Home" class="tab">
+  <mat-tab label="Home" class="tab" aria-label="Home tab">
     <app-details (swipeEmitter)="swipe($event)"></app-details>
   </mat-tab>
-  <mat-tab label="Contact" class="tab">
+  <mat-tab label="Contact" class="tab" aria-label="Contact tab">
     <app-contact (swipeEmitter)="swipe($event)"></app-contact>
   </mat-tab>
-  <mat-tab label="Blog" class="tab">
+  <mat-tab label="Blog" class="tab" aria-label="Blog tab">
     <app-blog (swipeEmitter)="swipe($event)"></app-blog>
   </mat-tab>
-  <mat-tab label="Photography" class="tab">
+  <mat-tab label="Photography" class="tab" aria-label="Photography tab">
     <app-photography></app-photography>
   </mat-tab>
 </mat-tab-group>
