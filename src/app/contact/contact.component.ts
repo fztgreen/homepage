@@ -1,5 +1,11 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -20,7 +26,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
@@ -29,8 +35,8 @@ export class ContactComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();
   private _snackBar = inject(MatSnackBar);
   contactForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    message: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    message: new FormControl('', Validators.required),
   });
 
   constructor() {
@@ -48,10 +54,7 @@ export class ContactComponent {
   }
 
   openConfirmation(message: string, action: string) {
-    if (
-      this.contactForm.controls['name'].value != '' &&
-      this.contactForm.controls['message'].value != ''
-    ) {
+    if (this.contactForm.valid) {
       this._snackBar.open(message, action);
     }
   }

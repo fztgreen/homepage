@@ -36,6 +36,7 @@
         mat-raised-button
         (click)="openConfirmation('Message Sent!', 'OK')"
         class="submit-button"
+        [disabled]="!contactForm.valid"
       >
         Submit
       </button>

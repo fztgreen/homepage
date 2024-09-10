@@ -1,3 +1,5 @@
+@use "../../variables" as variables;
+
 .app-page {
   display: flex;
   align-items: center;
@@ -7,9 +9,15 @@
 }
 
 .paragraph {
-    text-indent: 1em;
+  text-indent: 1em;
 }
 
 .sign-off {
-    text-align: right;
+  text-align: right;
+}
+
+.blog-post {
+  background-color: variables.$card-color;
+  padding: 1em;
+  width: 75%;
 }

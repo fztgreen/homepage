@@ -8,6 +8,7 @@ $my-theme: mat.define-theme(
     color: (
       theme-type: dark,
       primary: mat.$spring-green-palette,
+      tertiary: mat.$spring-green-palette
     ),
   )
 );
