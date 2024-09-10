@@ -1,1 +1,1 @@
-ng deploy --repo=https://github.com/fztgreen/homepage.git --base-href=/
+ng deploy --repo=https://github.com/fztgreen/homepage.git --cname=fztgreen.dev
