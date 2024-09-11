@@ -7,6 +7,7 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { HammerModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { routes } from './app.routes';
 import * as Hammer from 'hammerjs';
 
@@ -19,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     importProvidersFrom(HammerModule),
+    provideLuxonDateAdapter()
   ],
 };
