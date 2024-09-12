@@ -54,7 +54,7 @@ export class ContactComponent {
 
     iconRegistry.addSvgIcon(
       'bmc',
-      sanitizer.bypassSecurityTrustResourceUrl('bmc-brand-icon.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/bmc-brand-icon.svg')
     );
   }
 
