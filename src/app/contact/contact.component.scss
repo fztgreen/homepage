@@ -47,6 +47,10 @@
   width: 90%;
 }
 
+.good-luck-field {
+  width: 50%;
+}
+
 .name-field {
   width: 40%;
 }
@@ -63,4 +67,10 @@
 
 .links {
   margin-top: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

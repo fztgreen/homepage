@@ -41,6 +41,11 @@ export class ContactComponent {
     name: new FormControl<string>('', [Validators.required]),
     message: new FormControl<string>('', [Validators.required]),
     respondByDate: new FormControl<luxon.DateTime | null>(null),
+    testField: new FormControl<string | null>(null, [
+      Validators.email,
+      Validators.maxLength(20),
+      Validators.minLength(5)
+    ]),
   });
 
   constructor() {
@@ -61,5 +66,14 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       this._snackBar.open(message, action);
     }
+  }
+
+  getTestFieldMessage(): string {
+    let errorMessage = '';
+    for (let e in this.contactForm.get('testField')?.errors) {
+      errorMessage += `${e} `;
+    }
+
+    return errorMessage;
   }
 }

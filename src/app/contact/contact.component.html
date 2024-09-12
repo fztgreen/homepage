@@ -18,7 +18,7 @@
     <h3><a href="https://github.com/fztgreen/">Github</a></h3>
 
     <mat-card class="card-form">
-      <div role="group" [formGroup]="contactForm">
+      <div role="group" [formGroup]="contactForm" class="form-group">
         <mat-form-field class="name-field">
           <mat-label>Name</mat-label>
           <input matInput placeholder="John Doe" formControlName="name" />
@@ -44,6 +44,11 @@
             [for]="dp"
           ></mat-datepicker-toggle>
           <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="test-field-please-ignore">
+          <mat-label>Test Field Please Ignore</mat-label>
+          <input matInput formControlName="testField"/>
+          <mat-error>{{getTestFieldMessage()}}</mat-error>
         </mat-form-field>
       </div>
       <span class="submit-span">
