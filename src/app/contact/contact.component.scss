@@ -1,9 +1,22 @@
+@use "variables" as variables;
+
+.whole-page {
+  display: flex;
+  justify-content: center;
+}
+
 .app-page {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 90vh;
   touch-action: pan-y !important;
+  width: 70%;
+}
+
+@media (max-width: variables.$mobile-width) {
+  .app-page {
+    width: 100%;
+  }
 }
 
 .headshot {
