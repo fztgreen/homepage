@@ -21,3 +21,8 @@ body {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.mat-mdc-tab-body-content {
+  scrollbar-width: thin;
+  scrollbar-color: gray black;
+}
