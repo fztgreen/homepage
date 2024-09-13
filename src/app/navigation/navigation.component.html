@@ -1,4 +1,9 @@
-<mat-tab-group class="navigation-tabs" [(selectedIndex)]="selected" preserveContent>
+<mat-tab-group
+  class="navigation-tabs"
+  [(selectedIndex)]="selected"
+  preserveContent
+  (selectedTabChange)="tabChange($event)"
+>
   <mat-tab label="Home" class="tab" aria-label="Home tab">
     <app-details (swipeEmitter)="swipe($event)"></app-details>
   </mat-tab>
