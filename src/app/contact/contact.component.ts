@@ -15,7 +15,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as luxon from 'luxon';
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'app-contact',
@@ -40,7 +40,7 @@ export class ContactComponent {
   contactForm: FormGroup = new FormGroup({
     name: new FormControl<string>('', [Validators.required]),
     message: new FormControl<string>('', [Validators.required]),
-    respondByDate: new FormControl<luxon.DateTime | null>(null),
+    respondByDate: new FormControl<DateTime | null>(null),
   });
 
   constructor() {
