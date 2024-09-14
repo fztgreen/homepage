@@ -14,7 +14,6 @@ import {
   MatTabsModule,
 } from '@angular/material/tabs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import 'hammerjs';
 import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
