@@ -1,14 +1,14 @@
-@use '../../variables' as variables;
+@use "variables" as variables;
 
 .app-page {
   display: flex;
-  height: 100%;
+  height: variables.$page-height;
   justify-content: center;
   flex-direction: column;
 }
 
 .photo-site {
-    height: 100vh;
+  height: 100vh;
 }
 
 @media (max-width: variables.$mobile-width) {

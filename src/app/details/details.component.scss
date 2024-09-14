@@ -3,6 +3,7 @@
 .whole-page {
   display: flex;
   justify-content: center;
+  height: variables.$page-height;
 }
 
 .app-page {
