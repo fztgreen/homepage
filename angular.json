@@ -30,7 +30,8 @@
                 "glob": "**/*",
                 "input": "src/app/assets",
                 "output": "assets"
-              }
+              },
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss"
