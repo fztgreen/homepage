@@ -7,9 +7,8 @@ describe('PhotographyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PhotographyComponent]
-    })
-    .compileComponents();
+      imports: [PhotographyComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PhotographyComponent);
     component = fixture.componentInstance;

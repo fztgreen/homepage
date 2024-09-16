@@ -42,7 +42,10 @@ export class NavigationComponent implements AfterViewInit {
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
   home: string = 'home';
 
-  constructor(private _route: ActivatedRoute, private _router: Router) {}
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
+  ) {}
 
   ngAfterViewInit() {
     this._route.fragment
