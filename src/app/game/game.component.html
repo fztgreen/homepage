@@ -1,1 +1,20 @@
-<p>Insert Game Here</p>
+<div class="game-window">
+  <h1>Counting Game</h1>
+  <h2>Count to 10!</h2>
+  <div class="interface">
+    <button mat-button (click)="increment()">Click Me!</button>
+    <p>Total: {{ count }}</p>
+  </div>
+  @if (count >= 10) {
+    <p>Congratulations! You Counted to 10!</p>
+  }
+  @if (count >= 20) {
+    <p>Congratulations? You were supposed to stop at 10.</p>
+  }
+  @if (count >= 100) {
+    <p>I have concerns.</p>
+  }
+  @if (count >= 110) {
+    <p>Congratulations! You counted to 110!</p>
+  }
+</div>
