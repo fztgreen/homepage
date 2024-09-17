@@ -1,8 +1,18 @@
 <div class="game-window">
   <h1>Counting Game</h1>
   <h2>Count to 10!</h2>
+
   <div class="interface">
-    <button mat-button (click)="increment()">Click Me!</button>
+    <div class="buttons">
+      <button mat-button (click)="increment()">Click Me!</button>
+      @if (count % 4 == 0) {
+        <button mat-button (click)="startAutoclicker()">
+          Start an autoclicker!
+        </button>
+      }
+    </div>
+    <p>Autoclicker total: {{ autoclickerTotal }}</p>
+    <p>hint: The total must be divisible by 4 to start an autoclicker</p>
     <p>Total: {{ count }}</p>
   </div>
   @if (count >= 10) {
@@ -16,5 +26,14 @@
   }
   @if (count >= 110) {
     <p>Congratulations! You counted to 110!</p>
+  }
+  @if (count >= 200) {
+    <p>Congratulations! Thank you for visiting my game, Stuart.</p>
+  }
+  @if (count >= 1000) {
+    <p>You must have figured out autoclicking. Genius!</p>
+  }
+  @if (count >= 10000) {
+    <p>Massive Applause, you virtuoso.</p>
   }
 </div>

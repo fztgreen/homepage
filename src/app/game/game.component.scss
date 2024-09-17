@@ -7,6 +7,15 @@
 
 .interface {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
+  min-height: 20vh;
+  min-width: 10vw;
+}
+
+.buttons {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
   flex-direction: column;
 }
