@@ -3,14 +3,12 @@ import {
   Component,
   DestroyRef,
   inject,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   MatTab,
   MatTabChangeEvent,
-  MatTabGroup,
   MatTabsModule,
 } from '@angular/material/tabs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -35,7 +33,6 @@ import { PhotographyComponent } from '../photography/photography.component';
 })
 export class NavigationComponent implements AfterViewInit {
   destroyRef = inject(DestroyRef);
-  @ViewChild(MatTabGroup) group: any;
   @ViewChildren(MatTab) tabs: any;
   tab_num = 0;
   selected = 0;

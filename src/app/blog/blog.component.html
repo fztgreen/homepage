@@ -4,42 +4,48 @@
   (swiperight)="notifySwipe($event.type)"
 >
   <h1>Blog</h1>
-  <mat-card class="blog-post">
-    <h2>9/7/2024</h2>
-    <h3>Creating this Site</h3>
-    <mat-divider></mat-divider>
-    <p class="paragraph">This has been a very fun site to work on! Angular is super nifty.</p>
-    <p class="paragraph">
-      I conceived this homepage initially with the idea of using github pages to
-      deploy a new Single Page Application. I wanted to get better at using
-      Angular standalone components, theming, material, and various other
-      aspects of Angular. So, what better a use of time than to set up a
-      homepage website?
-    </p>
-    <p class="paragraph">
-      My core design philosphy is to break apart each section of the site into
-      components and orchestrate across components efficiently. Angular material
-      provides Tab Groups to efficiently show multiple components in the same
-      area. I wanted to initially have a "Details" and "Contact" tab, and now I
-      am adding a "Blog" tab. There is no real purpose as to each of these tabs,
-      but it gives me something to work on. I've thrown around the idea of
-      adding some kind of browser game, but I haven't made any progress on what
-      that game should exactly be.
-    </p>
-    <p class="paragraph">
-      I wanted the mobile experience to be intuitive and easy to use, so I
-      integrated hammerjs into the site. I ran into multiple issues, namely with
-      tab groups and the way bindings are applied. I ended up using event
-      emitters to pass the gestures from the components to the navigation
-      component to handle changes in tab. This is frustrating since I'd rather
-      not have to duplicate logic everywhere just to handle gestures. For
-      instance, creating this blog component required me to copy and paste
-      various styles and code. I could probably create my own directives, but
-      there should be something that already exists and is flexible enough to be
-      used in any application, such as this one. My plan is to figure out what a
-      good replacement for hammerjs might be, since it has been 8 years since
-      its last update.
-    </p>
-    <p class="sign-off">- Zachary</p>
+  <mat-card class="blog-post" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>9/7/2024</mat-card-title>
+      <mat-card-subtitle>Creating this Site</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider class="divider"></mat-divider>
+    <mat-card-content>
+      <p class="paragraph">
+        This has been a very fun site to work on! Angular is super nifty.
+      </p>
+      <p class="paragraph">
+        I conceived this homepage initially with the idea of using github pages
+        to deploy a new Single Page Application. I wanted to get better at using
+        Angular standalone components, theming, material, and various other
+        aspects of Angular. So, what better a use of time than to set up a
+        homepage website?
+      </p>
+      <p class="paragraph">
+        My core design philosphy is to break apart each section of the site into
+        components and orchestrate across components efficiently. Angular
+        material provides Tab Groups to efficiently show multiple components in
+        the same area. I wanted to initially have a "Details" and "Contact" tab,
+        and now I am adding a "Blog" tab. There is no real purpose as to each of
+        these tabs, but it gives me something to work on. I've thrown around the
+        idea of adding some kind of browser game, but I haven't made any
+        progress on what that game should exactly be.
+      </p>
+      <p class="paragraph">
+        I wanted the mobile experience to be intuitive and easy to use, so I
+        integrated hammerjs into the site. I ran into multiple issues, namely
+        with tab groups and the way bindings are applied. I ended up using event
+        emitters to pass the gestures from the components to the navigation
+        component to handle changes in tab. This is frustrating since I'd rather
+        not have to duplicate logic everywhere just to handle gestures. For
+        instance, creating this blog component required me to copy and paste
+        various styles and code. I could probably create my own directives, but
+        there should be something that already exists and is flexible enough to
+        be used in any application, such as this one. My plan is to figure out
+        what a good replacement for hammerjs might be, since it has been 8 years
+        since its last update.
+      </p>
+    </mat-card-content>
+    <mat-card-footer><p class="sign-off">- Zachary</p></mat-card-footer>
   </mat-card>
 </div>
