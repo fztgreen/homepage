@@ -16,6 +16,7 @@ import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navigation',
@@ -27,6 +28,7 @@ import { PhotographyComponent } from '../photography/photography.component';
     BlogComponent,
     PhotographyComponent,
     RouterModule,
+    MatIconModule
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',

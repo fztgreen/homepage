@@ -5,15 +5,27 @@
   (selectedTabChange)="tabChange($event)"
 >
   <mat-tab label="Home" class="tab" aria-label="Home tab">
+    <ng-template mat-tab-label>
+      <mat-icon>home</mat-icon>
+    </ng-template>
     <app-details (swipeEmitter)="swipe($event)"></app-details>
   </mat-tab>
   <mat-tab label="Contact" class="tab" aria-label="Contact tab">
+    <ng-template mat-tab-label>
+      <mat-icon>contact_mail</mat-icon>
+    </ng-template>
     <app-contact (swipeEmitter)="swipe($event)"></app-contact>
   </mat-tab>
   <mat-tab label="Blog" class="tab" aria-label="Blog tab">
+    <ng-template mat-tab-label>
+      <mat-icon>rss_feed</mat-icon>
+    </ng-template>
     <app-blog (swipeEmitter)="swipe($event)"></app-blog>
   </mat-tab>
   <mat-tab label="Photography" class="tab" aria-label="Photography tab">
+    <ng-template mat-tab-label>
+      <mat-icon>image</mat-icon>
+    </ng-template>
     <app-photography></app-photography>
   </mat-tab>
 </mat-tab-group>
