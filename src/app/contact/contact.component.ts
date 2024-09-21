@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DateTime } from 'luxon';
 
@@ -30,6 +31,7 @@ import { DateTime } from 'luxon';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatTooltipModule
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',

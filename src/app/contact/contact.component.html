@@ -11,11 +11,36 @@
     />
     <mat-divider class="divider"></mat-divider>
     <h2>Contact Me</h2>
-    <h3><a href="mailto:zachary.greenfield@veteransunited.com">Email</a></h3>
     <h3>
-      <a href="https://www.linkedin.com/in/zacharygreenfieldf/">LinkedIn</a>
+      <a
+        href="mailto:zachary.greenfield@veteransunited.com"
+        matTooltip="Open email client"
+        matTooltipPosition="above"
+        >Email</a
+      >
     </h3>
-    <h3><a href="https://github.com/fztgreen/">Github</a></h3>
+    <h3>
+      <a
+        class="link"
+        href="https://www.linkedin.com/in/zacharygreenfieldf/"
+        target="_blank"
+        rel="noopener noreferrer"
+        matTooltip="Open in new tab"
+        matTooltipPosition="above"
+        >LinkedIn<mat-icon class="open-in-new">open_in_new</mat-icon></a
+      >
+    </h3>
+    <h3>
+      <a
+        class="link"
+        href="https://github.com/fztgreen/"
+        target="_blank"
+        rel="noopener noreferrer"
+        matTooltip="Open in new tab"
+        matTooltipPosition="above"
+        >Github<mat-icon class="open-in-new">open_in_new</mat-icon></a
+      >
+    </h3>
 
     <mat-card class="card-form">
       <div role="group" [formGroup]="contactForm" class="form-group">
@@ -60,9 +85,16 @@
     <mat-divider class="divider"></mat-divider>
     <h3 class="links">
       Like my site?
-      <a href="https://buymeacoffee.com/fztgreen"
+      <a
+        class="link"
+        href="https://buymeacoffee.com/fztgreen"
+        target="_blank"
+        rel="noopener noreferrer"
+        matTooltip="Open in new tab"
+        matTooltipPosition="above"
         >Buy me a coffee!<mat-icon svgIcon="bmc"></mat-icon
-      ></a>
+        ><mat-icon class="open-in-new">open_in_new</mat-icon></a
+      >
     </h3>
   </div>
 </div>
