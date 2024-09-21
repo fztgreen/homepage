@@ -3,29 +3,38 @@
   [(selectedIndex)]="selected"
   preserveContent
   (selectedTabChange)="tabChange($event)"
+  (animationDone)="markAnimationDone()"
 >
-  <mat-tab label="Home" class="tab" aria-label="Home tab">
+  <mat-tab label="details" class="tab" aria-label="Home tab">
     <ng-template mat-tab-label>
       <mat-icon>home</mat-icon>
     </ng-template>
-    <app-details (swipeEmitter)="swipe($event)"></app-details>
+    @if (selected == 0) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
-  <mat-tab label="Contact" class="tab" aria-label="Contact tab">
+  <mat-tab label="contact" class="tab" aria-label="Contact tab">
     <ng-template mat-tab-label>
       <mat-icon>contact_mail</mat-icon>
     </ng-template>
-    <app-contact (swipeEmitter)="swipe($event)"></app-contact>
+    @if (selected == 1) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
-  <mat-tab label="Blog" class="tab" aria-label="Blog tab">
+  <mat-tab label="blog" class="tab" aria-label="Blog tab">
     <ng-template mat-tab-label>
       <mat-icon>rss_feed</mat-icon>
     </ng-template>
-    <app-blog (swipeEmitter)="swipe($event)"></app-blog>
+    @if (selected == 2) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
-  <mat-tab label="Photography" class="tab" aria-label="Photography tab">
+  <mat-tab label="photography" class="tab" aria-label="Photography tab">
     <ng-template mat-tab-label>
       <mat-icon>image</mat-icon>
     </ng-template>
-    <app-photography></app-photography>
+    @if (selected == 3) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
 </mat-tab-group>
