@@ -6,6 +6,49 @@
   <h1>Blog</h1>
   <mat-card class="blog-post" appearance="outlined">
     <mat-card-header>
+      <mat-card-title>9/21/2024</mat-card-title>
+      <mat-card-subtitle>This site, lately</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider class="divider"></mat-divider>
+    <mat-card-content>
+      <p class="paragraph">
+        I've been making so many minor tweaks to the site lately.
+      </p>
+      <p class="paragraph">
+        Firstly, you may notice that many icons have been added. To accomplish
+        this, I've decided to use
+        <a href="https://fonts.google.com/icons">google's material icons</a> .
+        They are ubiquitous and easy to use, and are quite fitting to in a
+        google framework like Angular. One design philosphy I have always liked
+        is that links should generally open in new tabs by default. This
+        funcitonality was not added to this blog post due to developer laziness.
+      </p>
+      <p class="paragraph">
+        There also has been a new route added to the application. You can find
+        it under "/game". This is a very simple game, meant to experiment with
+        asynchonrous actions with elements similar to the popular "Cookie
+        Clicker". Please give it a try if you have the chance. No promises on
+        the quality, but it does have some functionality.
+      </p>
+      <p class="paragraph">
+        Instead of using additional routes in the /home endpoint, I have added
+        fragments. This is to help link to specific parts of the home page.
+        Routes, although used in tabs like this often, seemed to work in
+        unexpected ways. Since I do not want to rewrite this functionality for
+        now, I will keep the fragments. It is a cool demonstration of what kinds
+        of things they can do.
+      </p>
+      <p class="paragraph">
+        I'm sure there are many other changes I've made, but I don't know them
+        off the top of my head. So, if you have been here before today, please
+        feel free to look around to see if there are any changes that you
+        notice.
+      </p>
+    </mat-card-content>
+    <mat-card-footer><p class="sign-off">- Zachary</p></mat-card-footer>
+  </mat-card>
+  <mat-card class="blog-post" appearance="outlined">
+    <mat-card-header>
       <mat-card-title>9/7/2024</mat-card-title>
       <mat-card-subtitle>Creating this Site</mat-card-subtitle>
     </mat-card-header>

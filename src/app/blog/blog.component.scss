@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 90vh;
+  height: variables.$page-height;
   touch-action: pan-y !important;
 }
 
@@ -20,6 +20,8 @@
   background-color: variables.$card-color;
   padding: 1em;
   width: 75%;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .divider {
