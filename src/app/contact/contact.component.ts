@@ -45,6 +45,8 @@ export class ContactComponent {
     respondByDate: new FormControl<DateTime | null>(null),
   });
 
+  readonly minDate = new Date();
+
   constructor() {
     const iconRegistry = inject(MatIconRegistry);
     const sanitizer = inject(DomSanitizer);

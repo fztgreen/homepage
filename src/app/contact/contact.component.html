@@ -41,9 +41,12 @@
         >Github<mat-icon class="open-in-new">open_in_new</mat-icon></a
       >
     </h3>
-
     <mat-card class="card-form">
-      <div role="group" [formGroup]="contactForm" class="form-group">
+      <mat-card-content
+        role="group"
+        [formGroup]="contactForm"
+        class="form-group"
+      >
         <mat-form-field class="name-field">
           <mat-label>Name</mat-label>
           <input matInput placeholder="John Doe" formControlName="name" />
@@ -62,16 +65,18 @@
             matInput
             [matDatepicker]="dp"
             formControlName="respondByDate"
+            [min]="minDate"
+            [readonly]="true"
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
             [for]="dp"
           ></mat-datepicker-toggle>
-          <mat-datepicker #dp></mat-datepicker>
+          <mat-datepicker #dp disabled="false"></mat-datepicker>
         </mat-form-field>
-      </div>
-      <span class="submit-span">
+      </mat-card-content>
+      <mat-card-footer class="submit">
         <button
           mat-raised-button
           (click)="openConfirmation('Message Sent!', 'OK')"
@@ -80,7 +85,7 @@
         >
           Submit
         </button>
-      </span>
+      </mat-card-footer>
     </mat-card>
     <mat-divider class="divider"></mat-divider>
     <h3 class="links">
