@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -6,17 +7,23 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatIconModule } from '@angular/material/icon';
 import {
   MatTab,
   MatTabChangeEvent,
   MatTabsModule,
 } from '@angular/material/tabs';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouteReuseStrategy,
+  RouterModule,
+} from '@angular/router';
+import { Observable, take } from 'rxjs';
 import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navigation',
@@ -28,7 +35,8 @@ import { MatIconModule } from '@angular/material/icon';
     BlogComponent,
     PhotographyComponent,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    NgTemplateOutlet,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
@@ -47,25 +55,24 @@ export class NavigationComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    this._route.fragment
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((fragment) => {
-        this.navigateToTabFromFragment(fragment);
-      });
+    switch (
+      this._route.snapshot.pathFromRoot[1].firstChild?.routeConfig?.path
+    ) {
+      case 'details':
+        this.selected = 0;
+        break;
+      case 'contact':
+        this.selected = 1;
+        break;
+      case 'blog':
+        this.selected = 2;
+        break;
+      case 'photography':
+        this.selected = 3;
+        break;
+    }
 
     this.tab_num = this.tabs.length;
-  }
-
-  private navigateToTabFromFragment(fragment: string | null) {
-    let tab = this.tabs.find((x: any): boolean => {
-      return x.textLabel.toLowerCase() == fragment?.toLowerCase();
-    });
-
-    for (let x = 0; x < this.tabs.length; x++) {
-      if (this.tabs.get(x) == tab) {
-        this.selected = x;
-      }
-    }
   }
 
   swipe(eType: any) {
@@ -80,7 +87,16 @@ export class NavigationComponent implements AfterViewInit {
   }
 
   tabChange(tab: MatTabChangeEvent) {
-    this.selected = tab.index;
-    this._router.navigate([], { fragment: tab.tab.textLabel });
+    let name = tab.tab.textLabel.toLocaleLowerCase();
+
+    this._router.navigateByUrl(`home/(${name}:${name})`, {
+      skipLocationChange: false,
+    });
+  }
+
+  componentAdded(event: any) {
+    (event.swipeEmitter as Observable<string> | undefined)
+      ?.pipe(takeUntilDestroyed(this.destroyRef), take(1))
+      .subscribe((s) => this.swipe(s));
   }
 }

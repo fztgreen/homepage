@@ -4,28 +4,40 @@
   preserveContent
   (selectedTabChange)="tabChange($event)"
 >
-  <mat-tab label="Home" class="tab" aria-label="Home tab">
+  <mat-tab label="details" class="tab" aria-label="Home tab">
     <ng-template mat-tab-label>
       <mat-icon>home</mat-icon>
     </ng-template>
-    <app-details (swipeEmitter)="swipe($event)"></app-details>
+    <router-outlet
+      (activate)="componentAdded($event)"
+      name="details"
+    ></router-outlet>
   </mat-tab>
-  <mat-tab label="Contact" class="tab" aria-label="Contact tab">
+  <mat-tab label="contact" class="tab" aria-label="Contact tab">
     <ng-template mat-tab-label>
       <mat-icon>contact_mail</mat-icon>
     </ng-template>
-    <app-contact (swipeEmitter)="swipe($event)"></app-contact>
+    <router-outlet
+      (activate)="componentAdded($event)"
+      name="contact"
+    ></router-outlet>
   </mat-tab>
-  <mat-tab label="Blog" class="tab" aria-label="Blog tab">
+  <mat-tab label="blog" class="tab" aria-label="Blog tab">
     <ng-template mat-tab-label>
       <mat-icon>rss_feed</mat-icon>
     </ng-template>
-    <app-blog (swipeEmitter)="swipe($event)"></app-blog>
+    <router-outlet
+      (activate)="componentAdded($event)"
+      name="blog"
+    ></router-outlet>
   </mat-tab>
-  <mat-tab label="Photography" class="tab" aria-label="Photography tab">
+  <mat-tab label="photography" class="tab" aria-label="Photography tab">
     <ng-template mat-tab-label>
       <mat-icon>image</mat-icon>
     </ng-template>
-    <app-photography></app-photography>
+    <router-outlet
+      (activate)="componentAdded($event)"
+      name="photography"
+    ></router-outlet>
   </mat-tab>
 </mat-tab-group>
