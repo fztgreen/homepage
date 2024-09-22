@@ -43,6 +43,7 @@ export class NavigationComponent implements AfterViewInit {
   selected = 0;
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
   home: string = 'home';
+  animating: boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -82,9 +83,14 @@ export class NavigationComponent implements AfterViewInit {
   }
 
   tabChange(tab: MatTabChangeEvent) {
+    this.animating = true;
     this._router.navigate([`${tab.tab.textLabel.toLocaleLowerCase()}`], {
       relativeTo: this._route,
     });
+  }
+
+  markAnimationDone() {
+    this.animating = false;
   }
 
   componentAdded(event: any) {

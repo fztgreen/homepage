@@ -3,7 +3,7 @@
   [(selectedIndex)]="selected"
   preserveContent
   (selectedTabChange)="tabChange($event)"
-  animationDuration="200"
+  (animationDone)="markAnimationDone()"
 >
   <mat-tab label="details" class="tab" aria-label="Home tab">
     <ng-template mat-tab-label>
