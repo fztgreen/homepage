@@ -13,12 +13,7 @@ import {
   MatTabChangeEvent,
   MatTabsModule,
 } from '@angular/material/tabs';
-import {
-  ActivatedRoute,
-  Router,
-  RouteReuseStrategy,
-  RouterModule,
-} from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, take } from 'rxjs';
 import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
@@ -87,10 +82,8 @@ export class NavigationComponent implements AfterViewInit {
   }
 
   tabChange(tab: MatTabChangeEvent) {
-    let name = tab.tab.textLabel.toLocaleLowerCase();
-
-    this._router.navigateByUrl(`home/(${name}:${name})`, {
-      skipLocationChange: false,
+    this._router.navigate([`${tab.tab.textLabel.toLocaleLowerCase()}`], {
+      relativeTo: this._route,
     });
   }
 

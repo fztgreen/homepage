@@ -3,41 +3,38 @@
   [(selectedIndex)]="selected"
   preserveContent
   (selectedTabChange)="tabChange($event)"
+  animationDuration="400"
 >
   <mat-tab label="details" class="tab" aria-label="Home tab">
     <ng-template mat-tab-label>
       <mat-icon>home</mat-icon>
     </ng-template>
-    <router-outlet
-      (activate)="componentAdded($event)"
-      name="details"
-    ></router-outlet>
+    @if (selected == 0) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
   <mat-tab label="contact" class="tab" aria-label="Contact tab">
     <ng-template mat-tab-label>
       <mat-icon>contact_mail</mat-icon>
     </ng-template>
-    <router-outlet
-      (activate)="componentAdded($event)"
-      name="contact"
-    ></router-outlet>
+    @if (selected == 1) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
   <mat-tab label="blog" class="tab" aria-label="Blog tab">
     <ng-template mat-tab-label>
       <mat-icon>rss_feed</mat-icon>
     </ng-template>
-    <router-outlet
-      (activate)="componentAdded($event)"
-      name="blog"
-    ></router-outlet>
+    @if (selected == 2) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
   <mat-tab label="photography" class="tab" aria-label="Photography tab">
     <ng-template mat-tab-label>
       <mat-icon>image</mat-icon>
     </ng-template>
-    <router-outlet
-      (activate)="componentAdded($event)"
-      name="photography"
-    ></router-outlet>
+    @if (selected == 3) {
+      <router-outlet (activate)="componentAdded($event)"></router-outlet>
+    }
   </mat-tab>
 </mat-tab-group>
