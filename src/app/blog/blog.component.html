@@ -6,6 +6,80 @@
   <h1>Blog</h1>
   <mat-card class="blog-post" appearance="outlined">
     <mat-card-header>
+      <mat-card-title>9/22/2024</mat-card-title>
+      <mat-card-subtitle>Notes on Routes and Material Tabs</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider class="divider"></mat-divider>
+    <mat-card-content>
+      <p class="paragraph">
+        I went on an adventure trying to change the url from using fragments to
+        the more semantic and expected route. You can find my changes that
+        accomplished that
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/fztgreen/homepage/commit/ca24c497621283a9a2992387f101ce6b064d78e0#diff-5661931bdf83d778b72b3a4f9963c00ecc438fa97ae2530aca11ec40ff0356baR4
+        "
+          >here</a
+        >
+        . Angular's routing infrastructure should have been the best way to
+        accomplish this. However, there proved to be three main issues with
+        using Angular routing for this particular use case.
+      </p>
+      <h3>
+        1. Angular Routing using multiple router outlets in a single flexible
+      </h3>
+      <p class="paragraph">
+        Angular is really unhappy with having multiple primary router outlets in
+        a single file. The behavior is that the last router outlet is the one
+        that actually does anything. This can be fixed with auxiliary routes,
+        but that adds another issue of a strange looking url. For example, my
+        url said "http://localhost:4200/home/(details:details)". This is not a
+        url anyone would ever expect. I should be able to fix this issue by
+        using a custom url matcher that would allow a route such as
+        "/home/details" to match onto the route that normally would have to be
+        "/home/(details:details)", but that still doesn't fix the other issues
+        that I ran into.
+      </p>
+      <h3>2. Angular Routing and tab behavior</h3>
+      <p class="paragraph">
+        One of the best parts of using Angular Material's tabs is the animation
+        feature. That is, the animation that occurs when a user switches tabs.
+        It looks super nice! The issue with the routing implementation is that
+        as soon as the route is switched, the previous component is destroyed
+        and deactivates the route. So, the component is no longer displayed as
+        the tab changes. Thus, it makes the tab transition not as smooth as one
+        would like. This is not an issue when just using tabs on a single page
+        since the content never is destroyed and you can see the previous
+        component leaving the screen, as if nothing was happening to it.
+      </p>
+      <h3>3. Angular Routing and State</h3>
+      <p class="paragraph">
+        The last major issue with Angular Routing is that state is no longer
+        maintained between tabs. With the fragments implementation, the property
+        preserveContent on the tab group can be set up to maintain state when
+        tabs are changed. This is especially useful for the photography tab, so
+        that a person can look at a photo, tab over to a different page, and
+        then tab back into the photography tab and continue looking where they
+        left off. The base implementation also allows the user to continue where
+        they stopped scrolling on a previous page. When using Angular Routing,
+        this is all no longer the case. When the tab changes, the component is
+        destroyed since it leaves the dom on due to routing behavior. Thus, the
+        state is not maintained and a new component is created every time the
+        tab is changed. There could potentially be fixes for fix with state
+        management stuff like NgRx, but I have no looked into possibilities
+        here.
+      </p>
+      <p class="paragraph">
+        Overall, I have decided to go back to my fragments implementation for
+        now. I think it provides many more features for less work, is easier to
+        understand, and is still somewhat readable for what it is. 
+      </p>
+    </mat-card-content>
+    <mat-card-footer><p class="sign-off">- Zachary</p></mat-card-footer>
+  </mat-card>
+  <mat-card class="blog-post" appearance="outlined">
+    <mat-card-header>
       <mat-card-title>9/21/2024</mat-card-title>
       <mat-card-subtitle>This site, lately</mat-card-subtitle>
     </mat-card-header>
