@@ -11,19 +11,22 @@ import { interval } from 'rxjs';
   styleUrl: './game.component.scss',
 })
 export class GameComponent {
-  destoryRef = inject(DestroyRef);
+  destroyRef = inject(DestroyRef);
   count: number = 0;
   autoclickerTotal: number = 0;
+  buttonEnabled: boolean = true;
 
   increment(): void {
     this.count += 1;
   }
 
   startAutoclicker(): void {
+    this.buttonEnabled = false;
     interval(1000)
-      .pipe(takeUntilDestroyed(this.destoryRef))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
         this.count += 1;
+        this.buttonEnabled = true;
       });
 
     this.autoclickerTotal += 1;

@@ -5,7 +5,7 @@
   <div class="interface">
     <div class="buttons">
       <button mat-button (click)="increment()">Click Me!</button>
-      @if (count % 4 == 0) {
+      @if (count % 4 == 0 && buttonEnabled) {
         <button mat-button (click)="startAutoclicker()">
           Start an autoclicker!
         </button>

@@ -2,6 +2,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation.component';
+import { provideRouter } from '@angular/router';
+import { routes } from '../app.routes';
+import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -10,7 +13,7 @@ describe('NavigationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NavigationComponent],
-      providers: [provideHttpClient(), provideAnimations()],
+      providers: [provideHttpClient(), provideAnimations(), provideRouter(routes), provideLuxonDateAdapter()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavigationComponent);

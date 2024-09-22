@@ -4,6 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ContactComponent } from './contact.component';
+import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -19,6 +20,7 @@ describe('ContactComponent', () => {
         provideHttpClient(),
         provideAnimations(),
         { provide: MatSnackBar, useValue: snackbarSpy },
+        provideLuxonDateAdapter()
       ],
     }).compileComponents();
 
