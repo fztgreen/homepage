@@ -31,7 +31,7 @@ import { DateTime } from 'luxon';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
