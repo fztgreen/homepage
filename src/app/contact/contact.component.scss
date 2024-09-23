@@ -59,7 +59,10 @@
 
 .card-form {
   width: 80%;
-  background-color: #282828;
+  background-color: variables.$card-color-dark;
+  @media (prefers-color-scheme: light) {
+    background-color: variables.$card-color-light;
+  }
   display: flex;
   flex-direction: column;
   align-items: left;

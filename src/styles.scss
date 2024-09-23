@@ -3,18 +3,34 @@
 
 @include mat.core();
 
-$my-theme: mat.define-theme(
+mat.$theme-ignore-duplication-warnings: true;
+
+$my-dark-theme: mat.define-theme(
   (
     color: (
       theme-type: dark,
       primary: mat.$spring-green-palette,
-      tertiary: mat.$spring-green-palette
+      tertiary: mat.$spring-green-palette,
+    ),
+  )
+);
+
+$my-light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$spring-green-palette,
+      tertiary: mat.$spring-green-palette,
     ),
   )
 );
 
 html {
-  @include mat.all-component-themes($my-theme);
+  @include mat.all-component-themes($my-dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    @include mat.all-component-themes($my-light-theme);
+  }
 }
 
 body {
