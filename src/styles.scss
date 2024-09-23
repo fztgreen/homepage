@@ -25,10 +25,19 @@ $my-light-theme: mat.define-theme(
   )
 );
 
+$card-color-dark: #282828;
+$card-color-light: #f9faf4;
+
 html {
   @include mat.all-component-themes($my-dark-theme);
+  .mat-mdc-card {
+    background-color: $card-color-dark;
+  }
 
   @media (prefers-color-scheme: light) {
+    .mat-mdc-card {
+      background-color: $card-color-light;
+    }
     @include mat.all-component-themes($my-light-theme);
   }
 }

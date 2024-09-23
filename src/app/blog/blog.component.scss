@@ -17,10 +17,6 @@
 }
 
 .blog-post {
-  background-color: variables.$card-color-dark;
-  @media (prefers-color-scheme: light) {
-    background-color: variables.$card-color-light;
-  }
   padding: 1em;
   width: 75%;
   margin-top: 2em;
