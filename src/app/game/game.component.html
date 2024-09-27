@@ -6,7 +6,11 @@
     <div class="buttons">
       <button mat-button (click)="increment()">Click Me!</button>
       @if (count % 4 == 0 && buttonEnabled) {
-        <button mat-button (click)="startAutoclicker()">
+        <button mat-button (click)="startAutoclicker()" >
+          Start an autoclicker!
+        </button>
+      } @else {
+        <button mat-button style="visibility: hidden;" >
           Start an autoclicker!
         </button>
       }

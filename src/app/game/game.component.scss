@@ -14,8 +14,9 @@
 }
 
 .buttons {
-  min-height: 10vh;
+  min-height: 5em;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
 }
