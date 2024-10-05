@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     }
 
     if (theme === 'light') {
-      this.setTheme({ checked: true });
+      this.setTheme({ checked: false });
       this.checked = false;
     }
   }
