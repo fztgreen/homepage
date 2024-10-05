@@ -28,4 +28,19 @@
     </ng-template>
     <app-photography></app-photography>
   </mat-tab>
+  @if (mobileView) {
+    <mat-tab label="Settings" class="tab" aria-label="Settings Tab">
+      <ng-template mat-tab-label>
+        <mat-icon>settings</mat-icon>
+      </ng-template>
+      <span class="setting-item">
+        <h2 class="setting-property">Toggle Theme:</h2>
+        <mat-slide-toggle
+          class="theme-toggle"
+          [checked]="checked"
+          (change)="setTheme($event)"
+        ></mat-slide-toggle
+      ></span>
+    </mat-tab>
+  }
 </mat-tab-group>

@@ -1,3 +1,32 @@
 .navigation-tabs {
   height: 100vh;
 }
+
+.example-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  height: 5em;
+  padding-left: 5%;
+}
+
+.setting-property {
+  margin-right: 2em;
+}

@@ -1,9 +1,9 @@
-@use 'variables' as variables;
+@use "variables" as variables;
 
 @media (min-width: variables.$mobile-width) {
   .theme-toggle {
     position: absolute;
-    right: 1vw;
+    right: 3vw;
     top: 94vh;
     z-index: 10;
   }
