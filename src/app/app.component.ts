@@ -27,12 +27,12 @@ export class AppComponent implements OnInit {
 
     if (theme === 'dark') {
       this.checked = true;
-      this.setTheme({checked: true});
+      this.setTheme({ checked: true });
     }
 
     if (theme === 'light') {
       this.checked = false;
-      this.setTheme({checked: false});
+      this.setTheme({ checked: false });
     }
   }
 

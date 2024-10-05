@@ -25,7 +25,10 @@ export const routes: Routes = [
     redirectTo: '/home#blog',
     pathMatch: 'full',
   },
-  { matcher: (url) => AllCaseMatcher(url, 'home'), component: NavigationComponent },
+  {
+    matcher: (url) => AllCaseMatcher(url, 'home'),
+    component: NavigationComponent,
+  },
   { matcher: (url) => AllCaseMatcher(url, 'game'), component: GameComponent },
   { path: '**', component: NotFoundComponent },
 ];

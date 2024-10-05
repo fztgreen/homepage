@@ -20,7 +20,7 @@ describe('ContactComponent', () => {
         provideHttpClient(),
         provideAnimations(),
         { provide: MatSnackBar, useValue: snackbarSpy },
-        provideLuxonDateAdapter()
+        provideLuxonDateAdapter(),
       ],
     }).compileComponents();
 

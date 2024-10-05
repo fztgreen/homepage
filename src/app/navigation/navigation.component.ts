@@ -28,7 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
     BlogComponent,
     PhotographyComponent,
     RouterModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
