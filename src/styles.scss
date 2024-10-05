@@ -33,13 +33,21 @@ html {
   .mat-mdc-card {
     background-color: $card-color-dark;
   }
+}
 
-  @media (prefers-color-scheme: light) {
-    .mat-mdc-card {
-      background-color: $card-color-light;
-    }
-    @include mat.all-component-themes($my-light-theme);
+html.dark {
+  @include mat.all-component-themes($my-dark-theme);
+  .mat-mdc-card {
+    background-color: $card-color-dark;
   }
+}
+
+html.light {
+  .mat-mdc-card {
+    background-color: $card-color-light;
+  }
+
+  @include mat.all-component-themes($my-light-theme);
 }
 
 body {

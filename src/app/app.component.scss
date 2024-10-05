@@ -1,0 +1,16 @@
+@use 'variables' as variables;
+
+@media (min-width: variables.$mobile-width) {
+  .theme-toggle {
+    position: absolute;
+    right: 1vw;
+    top: 94vh;
+    z-index: 10;
+  }
+}
+
+@media (max-width: variables.$mobile-width) {
+  .theme-toggle {
+    visibility: hidden;
+  }
+}

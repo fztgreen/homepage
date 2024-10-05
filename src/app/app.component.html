@@ -1,1 +1,6 @@
 <router-outlet />
+<mat-slide-toggle
+  class="theme-toggle"
+  [checked]="checked"
+  (change)="setTheme($event)"
+></mat-slide-toggle>

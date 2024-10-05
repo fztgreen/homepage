@@ -6,7 +6,7 @@ import { interval } from 'rxjs';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [ MatButtonModule ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
