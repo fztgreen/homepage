@@ -26,25 +26,25 @@ export class AppComponent implements OnInit {
     }
 
     if (theme === 'dark') {
-      this.setTheme({ checked: true });
       this.checked = true;
+      this.setTheme({checked: true});
     }
 
     if (theme === 'light') {
-      this.setTheme({ checked: false });
       this.checked = false;
+      this.setTheme({checked: false});
     }
   }
 
   setTheme(value: any) {
-    localStorage.setItem('theme', value);
-
     if (value.checked) {
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else if (!value.checked) {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
     } else {
       if (
         window.matchMedia &&
