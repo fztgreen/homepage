@@ -1,5 +1,10 @@
+<span class="header">
+  <h1>Downloads</h1>
+</span>
+
 <div class="downloads-page">
   <div class="download-items">
+    <h2>Downloadable Items</h2>
     <span class="download-item">
       <strong style="margin-right: 1em">1.</strong>
       <a
@@ -16,5 +21,32 @@
         <button mat-stroked-button>Download a Picture</button>
       </a>
     </span>
+  </div>
+  <div class="upload-items">
+    <h2>Upload and then Download Your Own Files</h2>
+    <input
+      type="file"
+      class="file-input"
+      (change)="uploadFile($event)"
+      #fileUpload
+    />
+    <div class="file-upload">
+      {{ file?.name || "No file uploaded yet." }}
+      <button
+        mat-mini-fab
+        color="primary"
+        class="upload-btn"
+        (click)="fileUpload.click()"
+      >
+        <mat-icon>attach_file</mat-icon>
+      </button>
+    </div>
+    <button
+      mat-stroked-button
+      [disabled]="file === undefined"
+      (click)="downloadFile()"
+    >
+      Download that file
+    </button>
   </div>
 </div>
