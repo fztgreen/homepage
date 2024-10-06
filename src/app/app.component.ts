@@ -1,8 +1,17 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterOutlet } from '@angular/router';
 import { interval } from 'rxjs';
+import { svgs } from './assets/svgs';
 import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
@@ -12,37 +21,23 @@ import { NavigationComponent } from './navigation/navigation.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'homepage';
-  checked = true;
+  darkModeToggleChecked = true;
   destroyRef = inject(DestroyRef);
+
+  @ViewChild('darkModeSwitch', { read: ElementRef }) darkModeToggle:
+    | ElementRef
+    | undefined;
 
   ngOnInit(): void {
     this.loadTheme();
 
-    interval(250)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => {
-        this.loadTheme();
-      });
+    this.setupThemeListener();
   }
 
-  private loadTheme() {
-    let theme = localStorage.getItem('theme');
-
-    if (theme === null) {
-      localStorage.setItem('theme', 'dark');
-    }
-
-    if (theme === 'dark') {
-      this.checked = true;
-      this.setTheme({ checked: true });
-    }
-
-    if (theme === 'light') {
-      this.checked = false;
-      this.setTheme({ checked: false });
-    }
+  ngAfterViewInit(): void {
+    this.swapDarkModeToggleIcons();
   }
 
   setTheme(value: any) {
@@ -64,5 +59,42 @@ export class AppComponent implements OnInit {
         document.documentElement.classList.add('light');
       }
     }
+  }
+
+  private loadTheme() {
+    let theme = localStorage.getItem('theme');
+
+    if (theme === null) {
+      localStorage.setItem('theme', 'dark');
+    }
+
+    if (theme === 'dark') {
+      this.darkModeToggleChecked = true;
+      this.setTheme({ checked: true });
+    }
+
+    if (theme === 'light') {
+      this.darkModeToggleChecked = false;
+      this.setTheme({ checked: false });
+    }
+  }
+
+  private swapDarkModeToggleIcons() {
+    if (this.darkModeToggle) {
+      this.darkModeToggle.nativeElement
+        .querySelector('.mdc-switch__icon--on')
+        .firstChild.setAttribute('d', svgs.moon);
+      this.darkModeToggle.nativeElement
+        .querySelector('.mdc-switch__icon--off')
+        .firstChild.setAttribute('d', svgs.sun);
+    }
+  }
+
+  private setupThemeListener() {
+    interval(250)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.loadTheme();
+      });
   }
 }

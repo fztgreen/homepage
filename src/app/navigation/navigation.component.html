@@ -36,8 +36,9 @@
       <span class="setting-item">
         <h2 class="setting-property">Toggle Theme:</h2>
         <mat-slide-toggle
+          #darkModeSwitch
           class="theme-toggle"
-          [checked]="checked"
+          [checked]="darkModeToggleChecked"
           (change)="setTheme($event)"
         ></mat-slide-toggle
       ></span>

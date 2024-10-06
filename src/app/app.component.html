@@ -1,6 +1,7 @@
 <router-outlet />
 <mat-slide-toggle
+  #darkModeSwitch
   class="theme-toggle"
-  [checked]="checked"
+  [checked]="darkModeToggleChecked"
   (change)="setTheme($event)"
 ></mat-slide-toggle>

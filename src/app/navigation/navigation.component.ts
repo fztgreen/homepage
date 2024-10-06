@@ -2,8 +2,10 @@ import {
   AfterViewInit,
   Component,
   DestroyRef,
+  ElementRef,
   inject,
   OnInit,
+  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -20,6 +22,7 @@ import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
+import { svgs } from '../assets/svgs';
 
 @Component({
   selector: 'app-navigation',
@@ -44,8 +47,12 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   selected = 0;
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
   home: string = 'home';
-  checked: boolean = false;
+  darkModeToggleChecked: boolean = false;
   mobileView: boolean = false;
+
+  @ViewChild('darkModeSwitch', { read: ElementRef }) darkModeToggle:
+    | ElementRef
+    | undefined;
 
   constructor(
     private _route: ActivatedRoute,
@@ -53,13 +60,18 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.checked = localStorage.getItem('theme') === 'dark';
+    this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
+
     this.mobileView = document.body.offsetWidth < 700;
 
+    this.setupDarkModeListener();
+  }
+
+  private setupDarkModeListener() {
     interval(1000)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
-        this.checked = localStorage.getItem('theme') === 'dark';
+        this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
         this.mobileView = document.body.offsetWidth < 700;
       });
   }
@@ -72,18 +84,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       });
 
     this.tab_num = this.tabs.length;
-  }
-
-  private navigateToTabFromFragment(fragment: string | null) {
-    let tab = this.tabs.find((x: any): boolean => {
-      return x.textLabel.toLowerCase() == fragment?.toLowerCase();
-    });
-
-    for (let x = 0; x < this.tabs.length; x++) {
-      if (this.tabs.get(x) == tab) {
-        this.selected = x;
-      }
-    }
+    this.swapDarkModeToggleIcons();
   }
 
   swipe(eType: any) {
@@ -107,6 +108,29 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       localStorage.setItem('theme', 'dark');
     } else {
       localStorage.setItem('theme', 'light');
+    }
+  }
+
+  private swapDarkModeToggleIcons() {
+    if (this.darkModeToggle) {
+      this.darkModeToggle.nativeElement
+        .querySelector('.mdc-switch__icon--on')
+        .firstChild.setAttribute('d', svgs.moon);
+      this.darkModeToggle.nativeElement
+        .querySelector('.mdc-switch__icon--off')
+        .firstChild.setAttribute('d', svgs.sun);
+    }
+  }
+
+  private navigateToTabFromFragment(fragment: string | null) {
+    let tab = this.tabs.find((x: any): boolean => {
+      return x.textLabel.toLowerCase() == fragment?.toLowerCase();
+    });
+
+    for (let x = 0; x < this.tabs.length; x++) {
+      if (this.tabs.get(x) == tab) {
+        this.selected = x;
+      }
     }
   }
 }
