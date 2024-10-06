@@ -2,6 +2,7 @@ import { Routes, UrlMatchResult, UrlSegment } from '@angular/router';
 import { GameComponent } from './game/game.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DownloadComponent } from './download/download.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -30,6 +31,7 @@ export const routes: Routes = [
     component: NavigationComponent,
   },
   { matcher: (url) => AllCaseMatcher(url, 'game'), component: GameComponent },
+  { matcher: (url) => AllCaseMatcher(url, 'downloads'), component: DownloadComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

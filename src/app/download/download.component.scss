@@ -1,0 +1,19 @@
+.downloads-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.download-items {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.download-item {
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+}
