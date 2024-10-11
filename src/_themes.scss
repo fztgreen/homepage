@@ -1,0 +1,26 @@
+@use "@angular/material" as mat;
+
+mat.$theme-ignore-duplication-warnings: true;
+
+$my-dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$spring-green-palette,
+      tertiary: mat.$spring-green-palette,
+    ),
+  )
+);
+
+$my-light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$spring-green-palette,
+      tertiary: mat.$spring-green-palette,
+    ),
+  )
+);
+
+$card-color-dark: #282828;
+$card-color-light: #f9faf4;
