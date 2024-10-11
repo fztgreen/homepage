@@ -3,6 +3,7 @@ import { GameComponent } from './game/game.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DownloadComponent } from './download/download.component';
+import { StoreComponent } from './store/store.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +33,7 @@ export const routes: Routes = [
   },
   { matcher: (url) => AllCaseMatcher(url, 'game'), component: GameComponent },
   { matcher: (url) => AllCaseMatcher(url, 'downloads'), component: DownloadComponent },
+  { matcher: (url) => AllCaseMatcher(url, 'store'), component: StoreComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
