@@ -1,32 +1,40 @@
-<mat-toolbar-row class="toolbar-row">
-  <h1 class="title">Zachary's Store</h1>
-  <mat-divider></mat-divider>
-</mat-toolbar-row>
-<mat-toolbar-row class="toolbar-row">
-  <span class="menu-entries">
-    <div class="menu-entry">
-      <button mat-button [matMenuTriggerFor]="menu1" style="border: 0.1em">
-        Menu
-      </button>
-      <mat-menu #menu1="matMenu">
-        <button mat-menu-item>Menu Item1</button>
-        <button mat-menu-item>Menu Item2</button>
-      </mat-menu>
-    </div>
-    <div class="menu-entry">
-      <button mat-button [matMenuTriggerFor]="menu2">Menu</button>
-      <mat-menu #menu2="matMenu">
-        <button mat-menu-item>Menu Item1</button>
-      </mat-menu>
-    </div>
-    <div class="menu-entry">
-      <button mat-button [matMenuTriggerFor]="menu3">Menu</button>
-      <mat-menu #menu3="matMenu">
-        <button mat-menu-item>Menu Item1</button>
-        <button mat-menu-item>Menu Item2</button>
-        <button mat-menu-item>Menu Item3</button>
-      </mat-menu>
-    </div>
-  </span>
-  <mat-divider></mat-divider>
-</mat-toolbar-row>
+<div style="display: flex; flex-direction: column">
+  <mat-toolbar-row class="toolbar-row">
+    <h1 class="title">Zachary's Store</h1>
+    <mat-divider></mat-divider>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="toolbar-row">
+    <span class="menu-entries">
+      <div class="menu-entry">
+        <button
+          mat-button
+          [matMenuTriggerFor]="productsMenu"
+          style="border: 0.1em"
+        >
+          Products
+        </button>
+        <mat-menu #productsMenu="matMenu">
+          @for (product of products; track product) {
+            <a mat-menu-item routerLink="/store/{{product.slug}}">{{ product.name }}</a>
+          }
+        </mat-menu>
+      </div>
+      <div class="menu-entry">
+        <button mat-button [matMenuTriggerFor]="servicesMenu">Services</button>
+        <mat-menu #servicesMenu="matMenu">
+          @for (service of services; track service) {
+            <a mat-menu-item routerLink="/store/{{service.slug}}">{{ service.name }}</a>
+          }
+        </mat-menu>
+      </div>
+      <div class="menu-entry">
+        <button mat-button [matMenuTriggerFor]="requestsMenu">Requests</button>
+        <mat-menu #requestsMenu="matMenu">
+          <a mat-menu-item>Submit a Request</a>
+        </mat-menu>
+      </div>
+    </span>
+    <mat-divider></mat-divider>
+  </mat-toolbar-row>
+  <router-outlet />
+</div>
