@@ -13,10 +13,10 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    MatDividerModule,
+    MatDividerModule
   ],
   templateUrl: './store.component.html',
-  styleUrl: './store.component.scss',
+  styleUrl: './store.component.scss'
 })
 export class StoreComponent implements OnInit {
   products: MenuEntry[] = [];
@@ -26,12 +26,12 @@ export class StoreComponent implements OnInit {
     this.products = [
       { name: 'Computers', slug: 'computers' },
       { name: 'Used', slug: 'used' },
-      { name: 'Sale', slug: 'sale' },
+      { name: 'Sale', slug: 'sale' }
     ];
     this.services = [
       { name: 'Computer Build', slug: 'computer-build' },
       { name: 'Tech Support', slug: 'tech-support' },
-      { name: 'Website Build', slug: 'website-build' },
+      { name: 'Website Build', slug: 'website-build' }
     ];
   }
 }

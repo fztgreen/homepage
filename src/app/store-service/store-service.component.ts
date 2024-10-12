@@ -7,7 +7,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './store-service.component.html',
-  styleUrl: './store-service.component.scss',
+  styleUrl: './store-service.component.scss'
 })
 export class StoreServiceComponent implements OnInit {
   _destroyRef: DestroyRef = inject(DestroyRef);

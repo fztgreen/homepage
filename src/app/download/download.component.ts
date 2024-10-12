@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
   standalone: true,
   imports: [MatButtonModule, MatListModule, MatIconModule],
   templateUrl: './download.component.html',
-  styleUrl: './download.component.scss',
+  styleUrl: './download.component.scss'
 })
 export class DownloadComponent {
   file: File | undefined;

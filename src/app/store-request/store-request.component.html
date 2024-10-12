@@ -1,0 +1,24 @@
+<div class="request-page">
+  <div class="request-form">
+    <div class="form-header">
+      <h2>Submit a Request</h2>
+    </div>
+    <mat-form-field class="form-field">
+      <mat-label>Brief Description</mat-label>
+      <input
+        matInput
+        [formControl]="subject"
+        placeholder="Please add an API request!"
+      />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Full Description</mat-label>
+      <textarea
+        matInput
+        [formControl]="requestDetails"
+        placeholder="Please add an API request! This API should do X, Y, and Z. This helps me accomplish A, B, and C!"
+      ></textarea>
+    </mat-form-field>
+    <button mat-flat-button type="close">Submit</button>
+  </div>
+</div>

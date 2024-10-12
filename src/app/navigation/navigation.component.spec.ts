@@ -17,8 +17,8 @@ describe('NavigationComponent', () => {
         provideHttpClient(),
         provideAnimations(),
         provideRouter(routes),
-        provideLuxonDateAdapter(),
-      ],
+        provideLuxonDateAdapter()
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavigationComponent);

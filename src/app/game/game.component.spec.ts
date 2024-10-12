@@ -3,7 +3,7 @@ import {
   discardPeriodicTasks,
   fakeAsync,
   TestBed,
-  tick,
+  tick
 } from '@angular/core/testing';
 import { Random } from 'random-test-values';
 import { GameComponent } from './game.component';
@@ -14,7 +14,7 @@ describe('GameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GameComponent],
+      imports: [GameComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(GameComponent);

@@ -1,0 +1,24 @@
+.request-page {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  align-items: center;
+  margin-top: 5em;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: flex-end;
+}
+.form-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+}
+
+.form-field {
+  width: 100%;
+}

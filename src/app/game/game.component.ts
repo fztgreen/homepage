@@ -8,7 +8,7 @@ import { interval } from 'rxjs';
   standalone: true,
   imports: [MatButtonModule],
   templateUrl: './game.component.html',
-  styleUrl: './game.component.scss',
+  styleUrl: './game.component.scss'
 })
 export class GameComponent {
   destroyRef = inject(DestroyRef);

@@ -8,7 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   standalone: true,
   imports: [MatListModule, MatDividerModule, MatSlideToggleModule],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.scss',
+  styleUrl: './details.component.scss'
 })
 export class DetailsComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();

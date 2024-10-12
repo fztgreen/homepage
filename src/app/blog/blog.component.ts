@@ -7,7 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
   standalone: true,
   imports: [MatCardModule, MatDividerModule],
   templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss',
+  styleUrl: './blog.component.scss'
 })
 export class BlogComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();

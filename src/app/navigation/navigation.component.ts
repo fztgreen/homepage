@@ -6,7 +6,7 @@ import {
   inject,
   OnInit,
   ViewChild,
-  ViewChildren,
+  ViewChildren
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {
   MatTab,
   MatTabChangeEvent,
-  MatTabsModule,
+  MatTabsModule
 } from '@angular/material/tabs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { interval } from 'rxjs';
@@ -35,10 +35,10 @@ import { svgs } from '../assets/svgs';
     PhotographyComponent,
     RouterModule,
     MatIconModule,
-    MatSlideToggleModule,
+    MatSlideToggleModule
   ],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss',
+  styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements AfterViewInit, OnInit {
   destroyRef = inject(DestroyRef);
@@ -56,7 +56,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
   constructor(
     private _route: ActivatedRoute,
-    private _router: Router,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {

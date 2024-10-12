@@ -2,7 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
-  provideZoneChangeDetection,
+  provideZoneChangeDetection
 } from '@angular/core';
 import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { HammerModule } from '@angular/platform-browser';
@@ -20,6 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     importProvidersFrom(HammerModule),
-    provideLuxonDateAdapter(),
-  ],
+    provideLuxonDateAdapter()
+  ]
 };

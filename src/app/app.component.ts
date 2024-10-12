@@ -5,7 +5,7 @@ import {
   ElementRef,
   inject,
   OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -19,7 +19,7 @@ import { NavigationComponent } from './navigation/navigation.component';
   standalone: true,
   imports: [RouterOutlet, NavigationComponent, MatSlideToggleModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'homepage';

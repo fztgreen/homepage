@@ -4,7 +4,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -31,10 +31,10 @@ import { DateTime } from 'luxon';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+  styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();
@@ -42,7 +42,7 @@ export class ContactComponent {
   contactForm: FormGroup = new FormGroup({
     name: new FormControl<string>('', [Validators.required]),
     message: new FormControl<string>('', [Validators.required]),
-    respondByDate: new FormControl<DateTime | null>(null),
+    respondByDate: new FormControl<DateTime | null>(null)
   });
 
   readonly minDate = new Date();
@@ -53,7 +53,7 @@ export class ContactComponent {
 
     iconRegistry.addSvgIcon(
       'bmc',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/bmc-brand-icon.svg'),
+      sanitizer.bypassSecurityTrustResourceUrl('assets/bmc-brand-icon.svg')
     );
   }
 
