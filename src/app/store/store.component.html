@@ -1,6 +1,7 @@
-<div style="display: flex; flex-direction: column">
+<div class="store">
   <mat-toolbar-row class="toolbar-row">
-    <h1 class="title">Zachary's Store</h1>
+    <a routerLink="/store" class="title-link">
+      <h1 class="title">Zachary's Store</h1></a>
     <mat-divider></mat-divider>
   </mat-toolbar-row>
   <mat-toolbar-row class="toolbar-row">
@@ -9,13 +10,14 @@
         <button
           mat-button
           [matMenuTriggerFor]="productsMenu"
-          style="border: 0.1em"
         >
           Products
         </button>
         <mat-menu #productsMenu="matMenu">
           @for (product of products; track product) {
-            <a mat-menu-item routerLink="/store/{{product.slug}}">{{ product.name }}</a>
+            <a mat-menu-item routerLink="/store/{{ product.slug }}">{{
+              product.name
+            }}</a>
           }
         </mat-menu>
       </div>
@@ -23,7 +25,9 @@
         <button mat-button [matMenuTriggerFor]="servicesMenu">Services</button>
         <mat-menu #servicesMenu="matMenu">
           @for (service of services; track service) {
-            <a mat-menu-item routerLink="/store/{{service.slug}}">{{ service.name }}</a>
+            <a mat-menu-item routerLink="/store/{{ service.slug }}">{{
+              service.name
+            }}</a>
           }
         </mat-menu>
       </div>

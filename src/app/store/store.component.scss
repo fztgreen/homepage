@@ -1,3 +1,13 @@
+.store-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .menu-entries {
   display: flex;
   width: 100%;
