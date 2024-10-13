@@ -1,3 +1,5 @@
+@use "variables" as variables;
+
 .request-page {
   display: flex;
   flex-direction: column;
@@ -12,6 +14,13 @@
   width: 50%;
   align-items: flex-end;
 }
+
+@media (max-width: variables.$mobile-width) {
+  .request-form {
+    width: 90%;
+  }
+}
+
 .form-header {
   width: 100%;
   display: flex;
