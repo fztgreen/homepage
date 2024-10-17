@@ -1,4 +1,4 @@
-<div class="store">
+<div class="store-page">
   <mat-toolbar-row class="toolbar-row">
     <a routerLink="/store" class="title-link">
       <h1 class="title">Zachary's Store</h1></a>
@@ -40,5 +40,9 @@
     </span>
     <mat-divider></mat-divider>
   </mat-toolbar-row>
-  <router-outlet />
+  @if(isBaseStorePage) {
+    <h1 class="welcome-message">Welcome to my Store!</h1>
+  } @else {
+    <router-outlet />
+  }
 </div>

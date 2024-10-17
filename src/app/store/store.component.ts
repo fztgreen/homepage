@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, DoCheck, inject, OnChanges, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -18,9 +19,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss'
 })
-export class StoreComponent implements OnInit {
+export class StoreComponent implements OnInit, DoCheck{
+  _destroyRef: DestroyRef = inject(DestroyRef);
   products: MenuEntry[] = [];
   services: MenuEntry[] = [];
+  isBaseStorePage!: boolean;
+
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {
     this.products = [
@@ -33,6 +38,10 @@ export class StoreComponent implements OnInit {
       { name: 'Tech Support', slug: 'tech-support' },
       { name: 'Website Build', slug: 'website-build' }
     ];
+  }
+
+  ngDoCheck(): void {
+    this.isBaseStorePage = this._router.url.split('/')[this._router.url.split('/').length - 1] == 'store';
   }
 }
 
