@@ -1,4 +1,11 @@
-import { Component, DestroyRef, DoCheck, inject, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  DoCheck,
+  inject,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -19,7 +26,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss'
 })
-export class StoreComponent implements OnInit, DoCheck{
+export class StoreComponent implements OnInit, DoCheck {
   _destroyRef: DestroyRef = inject(DestroyRef);
   products: MenuEntry[] = [];
   services: MenuEntry[] = [];
@@ -41,7 +48,9 @@ export class StoreComponent implements OnInit, DoCheck{
   }
 
   ngDoCheck(): void {
-    this.isBaseStorePage = this._router.url.split('/')[this._router.url.split('/').length - 1] == 'store';
+    this.isBaseStorePage =
+      this._router.url.split('/')[this._router.url.split('/').length - 1] ==
+      'store';
   }
 }
 

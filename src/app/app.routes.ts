@@ -7,6 +7,7 @@ import { StoreServiceComponent } from './store-service/store-service.component';
 import { StoreComponent } from './store/store.component';
 import { StoreRequestComponent } from './store-request/store-request.component';
 import { ResumeComponent } from './resume/resume.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -56,6 +57,10 @@ export const routes: Routes = [
   {
     matcher: (url) => AllCaseMatcher(url, 'resume'),
     component: ResumeComponent
+  },
+  {
+    matcher: (url) => AllCaseMatcher(url, 'projects'),
+    component: ProjectsComponent
   },
   { path: '**', component: NotFoundComponent }
 ];
