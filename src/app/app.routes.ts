@@ -3,11 +3,11 @@ import { DownloadComponent } from './download/download.component';
 import { GameComponent } from './game/game.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { ResumeComponent } from './resume/resume.component';
+import { StoreRequestComponent } from './store-request/store-request.component';
 import { StoreServiceComponent } from './store-service/store-service.component';
 import { StoreComponent } from './store/store.component';
-import { StoreRequestComponent } from './store-request/store-request.component';
-import { ResumeComponent } from './resume/resume.component';
-import { ProjectsComponent } from './projects/projects.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

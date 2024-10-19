@@ -1,18 +1,14 @@
 <div class="store-page">
   <mat-toolbar-row class="toolbar-row">
     <a routerLink="/store" class="title-link">
-      <h1 class="title">Zachary's Store</h1></a>
+      <h1 class="title">Zachary's Store</h1></a
+    >
     <mat-divider></mat-divider>
   </mat-toolbar-row>
   <mat-toolbar-row class="toolbar-row">
     <span class="menu-entries">
       <div class="menu-entry">
-        <button
-          mat-button
-          [matMenuTriggerFor]="productsMenu"
-        >
-          Products
-        </button>
+        <button mat-button [matMenuTriggerFor]="productsMenu">Products</button>
         <mat-menu #productsMenu="matMenu">
           @for (product of products; track product) {
             <a mat-menu-item routerLink="/store/{{ product.slug }}">{{
@@ -40,7 +36,7 @@
     </span>
     <mat-divider></mat-divider>
   </mat-toolbar-row>
-  @if(isBaseStorePage) {
+  @if (isBaseStorePage) {
     <h1 class="welcome-message">Welcome to my Store!</h1>
   } @else {
     <router-outlet />

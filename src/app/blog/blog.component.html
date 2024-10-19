@@ -26,20 +26,20 @@
         accomplish this. However, there proved to be three main issues with
         using Angular routing for this particular use case.
       </p>
-      <h3>
-        1. Angular Routing using multiple router outlets
-      </h3>
+      <h3>1. Angular Routing using multiple router outlets</h3>
       <p class="paragraph">
         Angular is really unhappy with having multiple primary router outlets in
         a single file. The behavior is that the last router outlet is the one
         that actually does anything. This can be fixed with auxiliary routes,
         but that adds another issue of a strange looking url. For example, my
-        url said <span class="breakable-anywhere">"http://localhost:4200/home/(details:details)"</span>. This is not a
-        url anyone would ever expect. I should be able to fix this issue by
-        using a custom url matcher that would allow a route such as
-        "/home/details" to match onto the route that normally would have to be
-        "/home/(details:details)", but that still doesn't fix the other issues
-        that I ran into.
+        url said
+        <span class="breakable-anywhere"
+          >"http://localhost:4200/home/(details:details)"</span
+        >. This is not a url anyone would ever expect. I should be able to fix
+        this issue by using a custom url matcher that would allow a route such
+        as "/home/details" to match onto the route that normally would have to
+        be "/home/(details:details)", but that still doesn't fix the other
+        issues that I ran into.
       </p>
       <h3>2. Angular Routing and tab animation behavior</h3>
       <p class="paragraph">
@@ -73,7 +73,7 @@
       <p class="paragraph">
         Overall, I have decided to go back to my fragments implementation for
         now. I think it provides many more features for less work, is easier to
-        understand, and is still somewhat readable for what it is. 
+        understand, and is still somewhat readable for what it is.
       </p>
     </mat-card-content>
     <mat-card-footer><p class="sign-off">- Zachary</p></mat-card-footer>

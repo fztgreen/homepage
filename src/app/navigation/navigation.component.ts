@@ -18,11 +18,11 @@ import {
 } from '@angular/material/tabs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { interval } from 'rxjs';
+import { svgs } from '../assets/svgs';
 import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
-import { svgs } from '../assets/svgs';
 
 @Component({
   selector: 'app-navigation',

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { provideHttpClient } from '@angular/common/http';
+import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ContactComponent } from './contact.component';
-import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;

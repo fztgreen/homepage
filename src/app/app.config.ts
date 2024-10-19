@@ -1,4 +1,7 @@
-import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi
+} from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -22,5 +25,5 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(HammerModule),
     provideLuxonDateAdapter(),
     provideHttpClient(withInterceptorsFromDi())
-  ],
+  ]
 };

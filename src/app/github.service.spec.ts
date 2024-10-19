@@ -1,7 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
+import {
+  provideHttpClient,
+  withInterceptorsFromDi
+} from '@angular/common/http';
 import { GithubService } from './github.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('GithubService', () => {
   let service: GithubService;
