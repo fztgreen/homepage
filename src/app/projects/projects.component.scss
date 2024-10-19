@@ -1,3 +1,5 @@
+@use 'variables' as variables;
+
 li {
   margin-bottom: 1em;
 }
@@ -28,4 +30,29 @@ li {
 .project-entry {
   display: flex;
   flex-direction: row;
+}
+
+@media (max-width: variables.$mobile-width) {
+  .projects-page {
+    font-size: large;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .split-divider {
+    height: unset;
+    width: 100vw;
+  }
+
+  .projects-content {
+    width: 100%;
+    margin-left: 1em;
+    justify-content: center;
+  }
+  
+  .project-description {
+    width: 100%;
+  }
 }

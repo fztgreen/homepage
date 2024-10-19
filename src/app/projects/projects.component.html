@@ -16,7 +16,7 @@
       }
     </ol>
   </div>
-  <mat-divider [vertical]="true" class="split-divider"></mat-divider>
+  <mat-divider [vertical]="!mobileView" class="split-divider"></mat-divider>
   <div class="project-description">
     <h2>{{ this.currentProject.title }}</h2>
     @if (loadingReadme) {

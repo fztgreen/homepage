@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { take } from 'rxjs';
+import { interval, take } from 'rxjs';
 import { GithubService } from '../github.service';
 import { Project } from './models/project.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-projects',
@@ -20,7 +21,9 @@ import { Project } from './models/project.model';
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent implements OnInit {
+  _destroyRef: DestroyRef = inject(DestroyRef);
   readme!: string;
+  mobileView: boolean = document.body.offsetWidth < 700;
 
   readonly projects: Project[] = [
     {
@@ -99,6 +102,10 @@ export class ProjectsComponent implements OnInit {
         this.readme = r;
         this.loadingReadme = false;
       });
+
+    interval(500).pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
+      this.mobileView = document.body.offsetWidth < 700;
+    })
   }
 
   selectProject(project: Project): void {
