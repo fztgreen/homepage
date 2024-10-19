@@ -1,40 +1,14 @@
-<div style="font-size: xx-large; display: flex; flex-direction: column; align-items: center;">
-  <div style="width: 80%; justify-content: flex-start;">
+<div class="projects-page">
+  <div class="projects-content">
     <h1>Projects</h1>
     <ol>
-      <li>
-        <a href="https://github.com/fztgreen/homepage">Homepage (Angular)</a>
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/GroupSeven"
-          >The Great Escape Game (c++)</a
-        >
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/ascii">Ascii Art (golang)</a>
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/haskell-example"
-          >Haskell Example (haskell)</a
-        >
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/rust-tests-example"
-          >Rust Tests Example (rust)</a
-        >
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/KafkaExample"
-          >Kafka Example (C#)</a
-        >
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/chat-room">Chat Room (Angular)</a>
-      </li>
-      <li>
-        <a href="https://github.com/fztgreen/signal-r">SignalR Example (C#)</a>
-      </li>
-      <li><a href="https://github.com/fztgreen/pong">Pong (c++)</a></li>
+      @for (project of projects; track project) {
+        <li>
+          <a href="{{ project.link }}"
+            >{{ project.title }} ({{ project.language }})</a
+          >
+        </li>
+      }
     </ol>
   </div>
 </div>
