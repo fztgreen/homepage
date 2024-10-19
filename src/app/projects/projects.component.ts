@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { take } from 'rxjs';
 import { GithubService } from '../github.service';
 import { Project } from './models/project.model';
@@ -8,7 +10,12 @@ import { Project } from './models/project.model';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatDividerModule
+  ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
@@ -35,7 +42,7 @@ export class ProjectsComponent implements OnInit {
       title: 'Ascii Art',
       language: 'golang',
       readmeUrl:
-        'https://api.github.com/repos/fztgreen/ascii/contents/README.md'
+        'https://api.github.com/repos/fztgreen/ascii/contents/readme.md'
     } satisfies Project,
     {
       link: 'https://github.com/fztgreen/haskell-example',
@@ -79,6 +86,8 @@ export class ProjectsComponent implements OnInit {
       readmeUrl: 'https://api.github.com/repos/fztgreen/pong/contents/README.md'
     } satisfies Project
   ];
+  currentProject: Project = this.projects[0];
+  loadingReadme: boolean = true;
 
   constructor(private _github: GithubService) {}
 
@@ -86,13 +95,21 @@ export class ProjectsComponent implements OnInit {
     this._github
       .getReadMe(this.projects[0].readmeUrl)
       .pipe(take(1))
-      .subscribe((r) => (this.readme = r));
+      .subscribe((r) => {
+        this.readme = r;
+        this.loadingReadme = false;
+      });
   }
 
-  getReadMe(readmeUrl: string): void {
+  selectProject(project: Project): void {
+    this.loadingReadme = true;
+    this.currentProject = project;
     this._github
-      .getReadMe(readmeUrl)
+      .getReadMe(project.readmeUrl)
       .pipe(take(1))
-      .subscribe((r) => (this.readme = r));
+      .subscribe((r) => {
+        this.readme = r;
+        this.loadingReadme = false;
+      });
   }
 }

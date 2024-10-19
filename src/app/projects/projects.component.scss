@@ -6,16 +6,26 @@ li {
   font-size: xx-large;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   align-items: flex-start;
   width: 100%;
 }
 
 .projects-content {
-  width: 40%;
+  width: 25%;
   margin-left: 1em;
   justify-content: flex-start;
 }
 
 .project-description {
-  width: 60%;
+  width: 40%;
+}
+
+.split-divider {
+  height: 100vh;
+}
+
+.project-entry {
+  display: flex;
+  flex-direction: row;
 }

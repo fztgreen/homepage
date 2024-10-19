@@ -3,20 +3,26 @@
     <h1>Projects</h1>
     <ol>
       @for (project of projects; track project) {
-        <span style="display: flex; flex-direction: row">
+        <span class="project-entry">
           <li>
             <a href="{{ project.link }}"
               >{{ project.title }} ({{ project.language }})</a
             >
           </li>
-          <button mat-icon-button (click)="getReadMe(project.readmeUrl)">
-            preview
+          <button mat-icon-button (click)="selectProject(project)">
+            <mat-icon>preview</mat-icon>
           </button>
         </span>
       }
     </ol>
   </div>
+  <mat-divider [vertical]="true" class="split-divider"></mat-divider>
   <div class="project-description">
-    <p>{{ readme }}</p>
+    <h2>{{ this.currentProject.title }}</h2>
+    @if (loadingReadme) {
+      <mat-spinner></mat-spinner>
+    } @else {
+      <p>{{ readme }}</p>
+    }
   </div>
 </div>
