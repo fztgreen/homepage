@@ -1,4 +1,4 @@
-@use 'variables' as variables;
+@use "variables" as variables;
 
 li {
   margin-bottom: 1em;
@@ -8,7 +8,7 @@ li {
   font-size: xx-large;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
 }
@@ -20,7 +20,9 @@ li {
 }
 
 .project-description {
-  width: 40%;
+  width: 65%;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .split-divider {
@@ -51,7 +53,7 @@ li {
     margin-left: 1em;
     justify-content: center;
   }
-  
+
   .project-description {
     width: 100%;
   }

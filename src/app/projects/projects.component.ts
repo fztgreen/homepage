@@ -104,7 +104,7 @@ export class ProjectsComponent implements OnInit {
       });
 
     interval(500).pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
-      this.mobileView = document.body.offsetWidth < 700;
+      this.mobileView = document.body.offsetWidth <= 700;
     })
   }
 
