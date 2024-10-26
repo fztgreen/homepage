@@ -7,6 +7,7 @@ import { interval, take } from 'rxjs';
 import { GithubService } from '../github.service';
 import { Project } from './models/project.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +16,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'

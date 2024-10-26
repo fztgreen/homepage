@@ -9,7 +9,12 @@
               >{{ project.title }} ({{ project.language }})</a
             >
           </li>
-          <button mat-icon-button (click)="selectProject(project)">
+          <button
+            mat-icon-button
+            (click)="selectProject(project)"
+            matTooltip="Preview"
+            [matTooltipShowDelay]="350"
+          >
             <mat-icon>preview</mat-icon>
           </button>
         </span>
