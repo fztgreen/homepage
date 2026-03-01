@@ -16,7 +16,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, NavigationComponent, MatSlideToggleModule],
+    imports: [RouterOutlet, MatSlideToggleModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
