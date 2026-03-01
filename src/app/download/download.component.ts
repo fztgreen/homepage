@@ -4,11 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 @Component({
-  selector: 'app-download',
-  standalone: true,
-  imports: [MatButtonModule, MatListModule, MatIconModule],
-  templateUrl: './download.component.html',
-  styleUrl: './download.component.scss'
+    selector: 'app-download',
+    imports: [MatButtonModule, MatListModule, MatIconModule],
+    templateUrl: './download.component.html',
+    styleUrl: './download.component.scss'
 })
 export class DownloadComponent {
   file: File | undefined;

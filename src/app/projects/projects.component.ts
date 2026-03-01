@@ -10,17 +10,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-projects',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatDividerModule,
-    MatTooltipModule
-  ],
-  templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+    selector: 'app-projects',
+    imports: [
+        MatButtonModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        MatDividerModule,
+        MatTooltipModule
+    ],
+    templateUrl: './projects.component.html',
+    styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent implements OnInit {
   _destroyRef: DestroyRef = inject(DestroyRef);

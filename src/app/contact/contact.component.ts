@@ -20,23 +20,22 @@ import { DateTime } from 'luxon';
 import { HeadshotComponent } from "../headshot/headshot.component";
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatTooltipModule,
-    HeadshotComponent
-],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+    selector: 'app-contact',
+    imports: [
+        MatIconModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatTooltipModule,
+        HeadshotComponent
+    ],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();

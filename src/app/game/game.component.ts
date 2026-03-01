@@ -4,11 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { interval } from 'rxjs';
 
 @Component({
-  selector: 'app-game',
-  standalone: true,
-  imports: [MatButtonModule],
-  templateUrl: './game.component.html',
-  styleUrl: './game.component.scss'
+    selector: 'app-game',
+    imports: [MatButtonModule],
+    templateUrl: './game.component.html',
+    styleUrl: './game.component.scss'
 })
 export class GameComponent {
   destroyRef = inject(DestroyRef);

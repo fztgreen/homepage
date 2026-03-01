@@ -25,20 +25,19 @@ import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
 
 @Component({
-  selector: 'app-navigation',
-  standalone: true,
-  imports: [
-    MatTabsModule,
-    DetailsComponent,
-    ContactComponent,
-    BlogComponent,
-    PhotographyComponent,
-    RouterModule,
-    MatIconModule,
-    MatSlideToggleModule
-  ],
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+    selector: 'app-navigation',
+    imports: [
+        MatTabsModule,
+        DetailsComponent,
+        ContactComponent,
+        BlogComponent,
+        PhotographyComponent,
+        RouterModule,
+        MatIconModule,
+        MatSlideToggleModule
+    ],
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements AfterViewInit, OnInit {
   destroyRef = inject(DestroyRef);

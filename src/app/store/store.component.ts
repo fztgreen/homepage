@@ -6,17 +6,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-store',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatDividerModule
-  ],
-  templateUrl: './store.component.html',
-  styleUrl: './store.component.scss'
+    selector: 'app-store',
+    imports: [
+        RouterModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatDividerModule
+    ],
+    templateUrl: './store.component.html',
+    styleUrl: './store.component.scss'
 })
 export class StoreComponent implements OnInit, DoCheck {
   _destroyRef: DestroyRef = inject(DestroyRef);
