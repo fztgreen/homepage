@@ -17,6 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DateTime } from 'luxon';
+import { HeadshotComponent } from "../headshot/headshot.component";
 
 @Component({
   selector: 'app-contact',
@@ -31,8 +32,9 @@ import { DateTime } from 'luxon';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatTooltipModule
-  ],
+    MatTooltipModule,
+    HeadshotComponent
+],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

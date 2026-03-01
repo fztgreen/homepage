@@ -4,11 +4,7 @@
     (swipeleft)="notifySwipe($event.type)"
     (swiperight)="notifySwipe($event.type)"
   >
-    <h1>Zachary Greenfield</h1>
-    <img
-      class="headshot"
-      src="https://media.licdn.com/dms/image/v2/D5603AQE_kg-Fj0xpoQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1698710469812?e=1730937600&v=beta&t=Hvb__5FFSrAabAQgUPq58e3JSrRYNqmRJ6jrMAs2tRg"
-    />
+    <app-headshot></app-headshot>
     <mat-divider class="divider"></mat-divider>
     <h2>Contact Me</h2>
     <h3>
@@ -38,7 +34,18 @@
         rel="noopener noreferrer"
         matTooltip="Open in new tab"
         matTooltipPosition="above"
-        >Github<mat-icon class="open-in-new">open_in_new</mat-icon></a
+        >Github (Personal)<mat-icon class="open-in-new">open_in_new</mat-icon></a
+      >
+    </h3>
+    <h3>
+      <a
+        class="link"
+        href="https://github.com/fztgreen-veteransunited/"
+        target="_blank"
+        rel="noopener noreferrer"
+        matTooltip="Open in new tab"
+        matTooltipPosition="above"
+        >Github (Work)<mat-icon class="open-in-new">open_in_new</mat-icon></a
       >
     </h3>
     <mat-card class="card-form">
