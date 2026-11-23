@@ -9,27 +9,23 @@ import { StoreRequestComponent } from './store-request/store-request.component';
 import { StoreServiceComponent } from './store-service/store-service.component';
 import { StoreComponent } from './store/store.component';
 
+const navigationTabs = ['home', 'contact', 'blog', 'photography', 'settings'];
+
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     matcher: (url) => AllCaseWholeUrlMatcher(url, 'details'),
-    redirectTo: '/home#details'
+    redirectTo: '/home'
   },
+  // The tabs are componentless children of one parent route, so moving
+  // between them keeps the same NavigationComponent and its tab animation.
   {
-    matcher: (url) => AllCaseWholeUrlMatcher(url, 'contact'),
-    redirectTo: '/home#contact'
-  },
-  {
-    matcher: (url) => AllCaseWholeUrlMatcher(url, 'photography'),
-    redirectTo: '/home#photography'
-  },
-  {
-    matcher: (url) => AllCaseWholeUrlMatcher(url, 'blog'),
-    redirectTo: '/home#blog'
-  },
-  {
-    matcher: (url) => AllCaseMatcher(url, 'home'),
-    component: NavigationComponent
+    path: '',
+    component: NavigationComponent,
+    children: navigationTabs.map((tab) => ({
+      matcher: (url: UrlSegment[]) => AllCaseWholeUrlMatcher(url, tab),
+      children: []
+    }))
   },
   { matcher: (url) => AllCaseMatcher(url, 'game'), component: GameComponent },
   {

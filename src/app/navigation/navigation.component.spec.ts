@@ -8,9 +8,10 @@ import {
 } from '@angular/core/testing';
 import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import { NavigationEnd, provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { Random } from 'random-test-values';
+import { filter, firstValueFrom } from 'rxjs';
 import { routes } from '../app.routes';
 import { svgs } from '../assets/svgs';
 import { NavigationComponent } from './navigation.component';
@@ -45,6 +46,14 @@ describe('NavigationComponent', () => {
       ?.getAttribute('d');
   }
 
+  function nextNavigationEnd(): Promise<NavigationEnd> {
+    return firstValueFrom(
+      TestBed.inject(Router).events.pipe(
+        filter((event) => event instanceof NavigationEnd)
+      )
+    );
+  }
+
   it('should create', () => {
     // Assert
     expect(component).toBeTruthy();
@@ -59,7 +68,7 @@ describe('NavigationComponent', () => {
   });
 
   describe('selected', () => {
-    it('should select the tab named in the URL fragment', async () => {
+    it('should select the tab named in the URL path', async () => {
       // Arrange
       const labels = component.tabs.map((tab) => tab.textLabel);
       const index = Random.Number({ min: 1, max: labels.length });
@@ -67,12 +76,67 @@ describe('NavigationComponent', () => {
 
       // Act
       const navigation = await harness.navigateByUrl(
-        `/home#${labels[index]}`,
+        `/${labels[index].toLowerCase()}`,
         NavigationComponent
       );
 
       // Assert
       expect(navigation.selected()).toBe(index);
+    });
+
+    it('should select the tab named in the URL path when moving from another tab', async () => {
+      // Arrange
+      const labels = component.tabs.map((tab) => tab.textLabel);
+      const index = Random.Number({ min: 1, max: labels.length });
+      const harness = await RouterTestingHarness.create('/home');
+
+      // Act
+      const navigation = await harness.navigateByUrl(
+        `/${labels[index].toLowerCase()}`,
+        NavigationComponent
+      );
+
+      // Assert
+      expect(navigation.selected()).toBe(index);
+    });
+  });
+
+  describe('tabChange', () => {
+    it('should navigate to the path of the selected tab', async () => {
+      // Arrange
+      const harness = await RouterTestingHarness.create('/home');
+      const navigation = harness.routeDebugElement!
+        .componentInstance as NavigationComponent;
+      const index = Random.Number({ min: 1, max: navigation.tabs.length });
+      const tab = navigation.tabs.get(index)!;
+      const navigationEnd = nextNavigationEnd();
+
+      // Act
+      navigation.tabChange({ index, tab });
+      await navigationEnd;
+
+      // Assert
+      expect(TestBed.inject(Router).url).toBe(
+        `/${tab.textLabel.toLowerCase()}`
+      );
+    });
+
+    it('should keep showing the navigation when the settings tab opens on mobile', async () => {
+      // Arrange
+      const harness = await RouterTestingHarness.create('/home');
+      const navigation = harness.routeDebugElement!
+        .componentInstance as NavigationComponent;
+      navigation.mobileView = true;
+      harness.detectChanges();
+      const index = navigation.tabs.length - 1;
+      const navigationEnd = nextNavigationEnd();
+
+      // Act
+      navigation.tabChange({ index, tab: navigation.tabs.get(index)! });
+      await navigationEnd;
+
+      // Assert
+      expect(harness.routeDebugElement!.componentInstance).toBe(navigation);
     });
   });
 
