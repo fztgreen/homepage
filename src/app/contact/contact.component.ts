@@ -17,25 +17,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DateTime } from 'luxon';
-import { HeadshotComponent } from "../headshot/headshot.component";
+import { HeadshotComponent } from '../headshot/headshot.component';
 
 @Component({
-    selector: 'app-contact',
-    imports: [
-        MatIconModule,
-        MatDividerModule,
-        MatFormFieldModule,
-        MatCardModule,
-        MatInputModule,
-        MatButtonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatDatepickerModule,
-        MatTooltipModule,
-        HeadshotComponent
-    ],
-    templateUrl: './contact.component.html',
-    styleUrl: './contact.component.scss'
+  selector: 'app-contact',
+  imports: [
+    MatIconModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatTooltipModule,
+    HeadshotComponent
+  ],
+  templateUrl: './contact.component.html',
+  styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   @Output() swipeEmitter: EventEmitter<string> = new EventEmitter<string>();

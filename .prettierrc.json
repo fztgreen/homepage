@@ -1,3 +1,10 @@
 {
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.js", "*.mjs"],
+      "options": { "singleQuote": true }
+    }
+  ]
 }

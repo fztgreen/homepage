@@ -17,10 +17,10 @@ import { interval } from 'rxjs';
 import { svgs } from './assets/svgs';
 
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet, MatSlideToggleModule],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+  selector: 'app-root',
+  imports: [RouterOutlet, MatSlideToggleModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'homepage';

@@ -9,8 +9,7 @@ describe('HeadshotComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeadshotComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeadshotComponent);
     component = fixture.componentInstance;

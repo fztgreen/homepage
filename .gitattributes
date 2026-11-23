@@ -1,0 +1,3 @@
+# Store and check out text files with LF on every OS, so Prettier's
+# endOfLine check gives the same result on Windows and in CI.
+* text=auto eol=lf
