@@ -11,7 +11,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class StoreServiceComponent implements OnInit {
   private _route = inject(ActivatedRoute);
 
-  _destroyRef: DestroyRef = inject(DestroyRef);
+  private _destroyRef = inject(DestroyRef);
   name!: string;
 
   ngOnInit(): void {

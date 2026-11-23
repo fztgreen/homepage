@@ -47,7 +47,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   private _route = inject(ActivatedRoute);
   private _router = inject(Router);
 
-  destroyRef = inject(DestroyRef);
+  private _destroyRef = inject(DestroyRef);
   @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
   tab_num = 0;
   selected = 0;
@@ -70,7 +70,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
   private setupDarkModeListener() {
     interval(1000)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
         this.mobileView = document.body.offsetWidth < 700;
@@ -79,7 +79,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this._route.fragment
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe((fragment) => {
         this.navigateToTabFromFragment(fragment);
       });

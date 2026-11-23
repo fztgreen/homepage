@@ -46,6 +46,12 @@ module.exports = defineConfig([
           modifiers: ['private'],
           format: ['camelCase'],
           leadingUnderscore: 'forbid'
+        },
+        {
+          selector: ['classProperty', 'classMethod'],
+          modifiers: ['public'],
+          format: null,
+          leadingUnderscore: 'forbid'
         }
       ]
     }

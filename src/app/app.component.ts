@@ -25,7 +25,7 @@ import { svgs } from './assets/svgs';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'homepage';
   darkModeToggleChecked = true;
-  destroyRef = inject(DestroyRef);
+  private _destroyRef = inject(DestroyRef);
 
   @ViewChild('darkModeSwitch', { read: ElementRef }) darkModeToggle:
     | ElementRef
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private setupThemeListener() {
     interval(250)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.loadTheme();
       });

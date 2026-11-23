@@ -15,7 +15,7 @@ These rules fail `npm run verify`, so a green run covers them. Don't spend revie
 | Braces on every block, `===` in code and templates, `const` where possible, no unused variables     | ESLint (`curly`, `eqeqeq`, `@angular-eslint/template/eqeqeq`, `prefer-const`, `no-unused-vars`) |
 | No `any`                                                                                            | ESLint (`@typescript-eslint/no-explicit-any`)                                                   |
 | `inject()` instead of constructor injection; standalone components                                  | ESLint (`@angular-eslint/prefer-inject`, `prefer-standalone`)                                   |
-| `_camelCase` private fields, camelCase private methods                                              | ESLint (`@typescript-eslint/naming-convention`)                                                 |
+| `_camelCase` private fields; no underscore on private methods or public members                     | ESLint (`@typescript-eslint/naming-convention`)                                                 |
 | `app-` component and `app` directive selectors                                                      | ESLint (`@angular-eslint/component-selector`, `directive-selector`)                             |
 | No committed `fdescribe`, `fit`, `xdescribe` or `xit`                                               | ESLint (`no-restricted-globals` in `*.spec.ts`)                                                 |
 | Template accessibility (alt text, labels, keyboard events, …)                                       | ESLint (`angular.configs.templateAccessibility`)                                                |

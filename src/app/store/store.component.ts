@@ -1,4 +1,4 @@
-import { Component, DestroyRef, DoCheck, inject, OnInit } from '@angular/core';
+import { Component, DoCheck, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
@@ -20,7 +20,6 @@ import { Router, RouterModule } from '@angular/router';
 export class StoreComponent implements OnInit, DoCheck {
   private _router = inject(Router);
 
-  _destroyRef: DestroyRef = inject(DestroyRef);
   products: MenuEntry[] = [];
   services: MenuEntry[] = [];
   isBaseStorePage!: boolean;

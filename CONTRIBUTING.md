@@ -18,7 +18,7 @@ This app follows standard Angular conventions. Keep its structure predictable, s
 ## Naming
 
 - Classes, interfaces and types are PascalCase, with no `I` prefix (`Project`, not `IProject`).
-- Private fields start with an underscore (`private _router = inject(Router)`); private methods don't (`private loadTheme()`). `@typescript-eslint/naming-convention` enforces both.
+- Private fields start with an underscore (`private _router = inject(Router)`); private methods and public members don't (`private loadTheme()`, `selectProject()`). Fields only the class uses are `private`. `@typescript-eslint/naming-convention` enforces the underscores.
 - Choose descriptive names over short ones. Names say what something does or represents (`selectProject`, `mobileView`), not how it's built (`doWork`, `list2`, `tmp`). Avoid abbreviations and generic names like `Helper`, `Manager`, or `Data`.
 
 ## Clean Code

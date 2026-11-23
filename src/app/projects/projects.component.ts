@@ -24,7 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class ProjectsComponent implements OnInit {
   private _github = inject(GithubService);
 
-  _destroyRef: DestroyRef = inject(DestroyRef);
+  private _destroyRef = inject(DestroyRef);
   readme!: string;
   mobileView: boolean = document.body.offsetWidth < 700;
 

@@ -10,7 +10,7 @@ import { interval } from 'rxjs';
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
-  destroyRef = inject(DestroyRef);
+  private _destroyRef = inject(DestroyRef);
   count = 0;
   autoclickerTotal = 0;
   buttonEnabled = true;
@@ -22,7 +22,7 @@ export class GameComponent {
   startAutoclicker(): void {
     this.buttonEnabled = false;
     interval(1000)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.count += 1;
         this.buttonEnabled = true;
