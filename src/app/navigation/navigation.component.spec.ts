@@ -50,10 +50,12 @@ describe('NavigationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should correctly set amount of tabs', () => {
-    // Assert
-    expect(component.tab_num).not.toBeUndefined();
-    expect(component.tab_num).toBe(component.tabs.length);
+  describe('tab_num', () => {
+    it('should match the number of tabs', () => {
+      // Assert
+      expect(component.tab_num).not.toBeUndefined();
+      expect(component.tab_num).toBe(component.tabs.length);
+    });
   });
 
   describe('selected', () => {
