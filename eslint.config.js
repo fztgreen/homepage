@@ -32,7 +32,6 @@ module.exports = defineConfig([
           style: 'kebab-case'
         }
       ],
-      curly: ['error', 'all'],
       eqeqeq: ['error', 'always'],
       '@typescript-eslint/naming-convention': [
         'error',
@@ -59,6 +58,13 @@ module.exports = defineConfig([
     ],
     rules: {}
   },
-  // Must stay last: turns off every stylistic rule that Prettier owns, so the two never disagree.
-  prettier
+  // Turns off every stylistic rule that Prettier owns, so the two never disagree.
+  prettier,
+  {
+    // After eslint-config-prettier, which disables curly. With "all", Prettier never conflicts with it.
+    files: ['**/*.ts'],
+    rules: {
+      curly: ['error', 'all']
+    }
+  }
 ]);
