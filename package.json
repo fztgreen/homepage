@@ -11,6 +11,10 @@
     "lint": "ng lint"
   },
   "private": true,
+  "engines": {
+    "node": "^24.6.0",
+    "npm": "^11.5.0"
+  },
   "dependencies": {
     "@angular/animations": "^21.2.0",
     "@angular/cdk": "^21.2.0",
