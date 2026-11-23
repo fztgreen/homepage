@@ -69,7 +69,7 @@ function AllCaseMatcher(
   urlsegments: UrlSegment[],
   endpoint: string
 ): UrlMatchResult | null {
-  if (urlsegments[0].path.toLocaleLowerCase() == endpoint) {
+  if (urlsegments[0].path.toLocaleLowerCase() === endpoint) {
     return { consumed: [urlsegments[0]] };
   }
 

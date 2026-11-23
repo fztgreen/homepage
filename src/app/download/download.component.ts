@@ -12,8 +12,8 @@ import { MatListModule } from '@angular/material/list';
 export class DownloadComponent {
   file: File | undefined;
 
-  public uploadFile(event: any): void {
-    this.file = event.target.files[0];
+  public uploadFile(event: Event): void {
+    this.file = (event.target as HTMLInputElement).files?.[0];
     localStorage.setItem('upload', JSON.stringify(this.file));
   }
 

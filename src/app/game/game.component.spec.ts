@@ -28,7 +28,7 @@ describe('GameComponent', () => {
 
   describe('increment', () => {
     it('should increase count by 1', () => {
-      let randomCount = Random.Number({ min: 0 });
+      const randomCount = Random.Number({ min: 0 });
       component.count = randomCount;
 
       component.increment();
@@ -59,7 +59,7 @@ describe('GameComponent', () => {
     }));
 
     it('should increase autoclicker total by 1', fakeAsync(() => {
-      let autoclickerTotal = Random.Number({ min: 0 });
+      const autoclickerTotal = Random.Number({ min: 0 });
       component.autoclickerTotal = autoclickerTotal;
 
       component.startAutoclicker();

@@ -11,9 +11,9 @@ import { interval } from 'rxjs';
 })
 export class GameComponent {
   destroyRef = inject(DestroyRef);
-  count: number = 0;
-  autoclickerTotal: number = 0;
-  buttonEnabled: boolean = true;
+  count = 0;
+  autoclickerTotal = 0;
+  buttonEnabled = true;
 
   increment(): void {
     this.count += 1;

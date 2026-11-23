@@ -6,24 +6,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-store',
-    imports: [
-        RouterModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatDividerModule
-    ],
-    templateUrl: './store.component.html',
-    styleUrl: './store.component.scss'
+  selector: 'app-store',
+  imports: [
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule
+  ],
+  templateUrl: './store.component.html',
+  styleUrl: './store.component.scss'
 })
 export class StoreComponent implements OnInit, DoCheck {
+  private _router = inject(Router);
+
   _destroyRef: DestroyRef = inject(DestroyRef);
   products: MenuEntry[] = [];
   services: MenuEntry[] = [];
   isBaseStorePage!: boolean;
-
-  constructor(private _router: Router) {}
 
   ngOnInit(): void {
     this.products = [
@@ -40,7 +40,7 @@ export class StoreComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.isBaseStorePage =
-      this._router.url.split('/')[this._router.url.split('/').length - 1] ==
+      this._router.url.split('/')[this._router.url.split('/').length - 1] ===
       'store';
   }
 }

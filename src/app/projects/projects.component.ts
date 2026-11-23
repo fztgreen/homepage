@@ -10,18 +10,20 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-    selector: 'app-projects',
-    imports: [
-        MatButtonModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        MatDividerModule,
-        MatTooltipModule
-    ],
-    templateUrl: './projects.component.html',
-    styleUrl: './projects.component.scss'
+  selector: 'app-projects',
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatDividerModule,
+    MatTooltipModule
+  ],
+  templateUrl: './projects.component.html',
+  styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent implements OnInit {
+  private _github = inject(GithubService);
+
   _destroyRef: DestroyRef = inject(DestroyRef);
   readme!: string;
   mobileView: boolean = document.body.offsetWidth < 700;
@@ -91,9 +93,7 @@ export class ProjectsComponent implements OnInit {
     } satisfies Project
   ];
   currentProject: Project = this.projects[0];
-  loadingReadme: boolean = true;
-
-  constructor(private _github: GithubService) {}
+  loadingReadme = true;
 
   ngOnInit(): void {
     this._github
@@ -104,9 +104,11 @@ export class ProjectsComponent implements OnInit {
         this.loadingReadme = false;
       });
 
-    interval(500).pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
-      this.mobileView = document.body.offsetWidth <= 700;
-    })
+    interval(500)
+      .pipe(takeUntilDestroyed(this._destroyRef))
+      .subscribe(() => {
+        this.mobileView = document.body.offsetWidth <= 700;
+      });
   }
 
   selectProject(project: Project): void {

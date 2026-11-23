@@ -8,11 +8,13 @@ import {
   ViewChild
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+  MatSlideToggleChange,
+  MatSlideToggleModule
+} from '@angular/material/slide-toggle';
 import { RouterOutlet } from '@angular/router';
 import { interval } from 'rxjs';
 import { svgs } from './assets/svgs';
-import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
     selector: 'app-root',
@@ -39,7 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.swapDarkModeToggleIcons();
   }
 
-  setTheme(value: any) {
+  setTheme(value: Pick<MatSlideToggleChange, 'checked'>) {
     if (value.checked) {
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
@@ -61,7 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private loadTheme() {
-    let theme = localStorage.getItem('theme');
+    const theme = localStorage.getItem('theme');
 
     if (theme === null) {
       localStorage.setItem('theme', 'dark');
