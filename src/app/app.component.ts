@@ -46,28 +46,15 @@ export class AppComponent implements OnInit, AfterViewInit {
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
-    } else if (!value.checked) {
+    } else {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
       localStorage.setItem('theme', 'light');
-    } else {
-      if (
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      ) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.add('light');
-      }
     }
   }
 
   private loadTheme() {
-    const theme = localStorage.getItem('theme');
-
-    if (theme === null) {
-      localStorage.setItem('theme', 'dark');
-    }
+    const theme = localStorage.getItem('theme') ?? 'dark';
 
     if (theme === 'dark') {
       this.darkModeToggleChecked = true;
