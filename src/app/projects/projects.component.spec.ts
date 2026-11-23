@@ -69,7 +69,7 @@ describe('ProjectsComponent', () => {
       respondWithReadme(component.projects[0].readmeUrl, randomReadme());
       const project =
         component.projects[
-          Random.Number({ min: 1, max: component.projects.length - 1 })
+          Random.Number({ min: 1, max: component.projects.length })
         ];
       const readme = randomReadme();
 
