@@ -17,6 +17,7 @@ describe('GithubService', () => {
   });
 
   it('should be created', () => {
+    // Assert
     expect(service).toBeTruthy();
   });
 });

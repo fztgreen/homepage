@@ -17,6 +17,7 @@ describe('HeadshotComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 });

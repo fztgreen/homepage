@@ -28,11 +28,12 @@ npm run test:once       # Karma once, headless Chrome
 
 ## Reference
 
-`src/app/game/game.component.spec.ts` is the closest to the test conventions: nested `describe` per member, randomized data, `fakeAsync` for timers. New specs also add the `// Arrange // Act // Assert` markers it lacks.
+- `src/app/projects/projects.component.spec.ts` is the reference for HTTP: `HttpTestingController` with `expectOne` on the exact URL, `verify()` in `afterEach`, randomized data.
+- `src/app/game/game.component.spec.ts` is the reference for component logic: nested `describe` per member, randomized data, `fakeAsync` for timers.
 
 ## Known Gaps
 
-Most existing specs only check `should create`, and none use the Arrange/Act/Assert markers yet. They predate these docs. Bring a spec up to the conventions when you change the code it covers. Don't use the existing ones as a template.
+Most existing specs only check `should create`, and some use hardcoded data (`contact.component.spec.ts`). They predate these docs. Bring a spec up to the conventions when you change the code it covers. Copy the reference specs above, not the others.
 
 ## Project Docs
 
