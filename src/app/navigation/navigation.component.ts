@@ -6,6 +6,7 @@ import {
   inject,
   OnInit,
   QueryList,
+  signal,
   ViewChild,
   ViewChildren
 } from '@angular/core';
@@ -50,7 +51,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   private _destroyRef = inject(DestroyRef);
   @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
   tab_num = 0;
-  selected = 0;
+  selected = signal(0);
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
   home = 'home';
   darkModeToggleChecked = false;
@@ -89,18 +90,18 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   }
 
   swipe(eType: string) {
-    if (eType === this.SWIPE_ACTION.RIGHT && this.selected > 0) {
-      this.selected--;
+    if (eType === this.SWIPE_ACTION.RIGHT && this.selected() > 0) {
+      this.selected.update((index) => index - 1);
     } else if (
       eType === this.SWIPE_ACTION.LEFT &&
-      this.selected < this.tab_num - 1
+      this.selected() < this.tab_num - 1
     ) {
-      this.selected++;
+      this.selected.update((index) => index + 1);
     }
   }
 
   tabChange(tab: MatTabChangeEvent) {
-    this.selected = tab.index;
+    this.selected.set(tab.index);
     this._router.navigate([], { fragment: tab.tab.textLabel });
   }
 
@@ -130,7 +131,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
     for (let x = 0; x < this.tabs.length; x++) {
       if (this.tabs.get(x) === tab) {
-        this.selected = x;
+        this.selected.set(x);
       }
     }
   }
