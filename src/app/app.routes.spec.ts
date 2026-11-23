@@ -11,7 +11,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 describe('routes', () => {
-  const homeSections = ['details', 'contact', 'photography', 'blog'];
+  const homeSections = ['home', 'contact', 'photography', 'blog'];
   let harness: RouterTestingHarness;
 
   beforeEach(async () => {
@@ -29,6 +29,11 @@ describe('routes', () => {
 
   function randomHomeSection(): string {
     return homeSections[Random.Number({ min: 0, max: homeSections.length })];
+  }
+
+  function randomHomeSectionOtherThan(section: string): string {
+    const others = homeSections.filter((other) => other !== section);
+    return others[Random.Number({ min: 0, max: others.length })];
   }
 
   function randomSegment(): string {
@@ -50,18 +55,56 @@ describe('routes', () => {
   }
 
   describe('home sections', () => {
-    it('should redirect a section path that is not lowercase to its home section', async () => {
+    it('should keep the section path in the URL', async () => {
       // Arrange
-      const section = randomHomeSection();
+      const url = `/${randomHomeSection()}`;
 
       // Act
-      await harness.navigateByUrl(
-        `/${notLowercase(section)}`,
+      await harness.navigateByUrl(url, NavigationComponent);
+
+      // Assert
+      expect(TestBed.inject(Router).url).toBe(url);
+    });
+
+    it('should show the navigation when a section path is not lowercase', async () => {
+      // Arrange
+      const url = `/${notLowercase(randomHomeSection())}`;
+
+      // Act
+      const navigation = await harness.navigateByUrl(url, NavigationComponent);
+
+      // Assert
+      expect(navigation).toBeInstanceOf(NavigationComponent);
+    });
+
+    it('should keep the same navigation when moving between sections', async () => {
+      // Arrange
+      const from = randomHomeSection();
+      const to = randomHomeSectionOtherThan(from);
+      const navigation = await harness.navigateByUrl(
+        `/${from}`,
+        NavigationComponent
+      );
+
+      // Act
+      const navigationAfterMove = await harness.navigateByUrl(
+        `/${to}`,
         NavigationComponent
       );
 
       // Assert
-      expect(TestBed.inject(Router).url).toBe(`/home#${section}`);
+      expect(navigationAfterMove).toBe(navigation);
+    });
+
+    it('should redirect details to home', async () => {
+      // Arrange
+      const url = `/${notLowercase('details')}`;
+
+      // Act
+      await harness.navigateByUrl(url, NavigationComponent);
+
+      // Assert
+      expect(TestBed.inject(Router).url).toBe('/home');
     });
 
     it('should show not found when a section path has extra segments', async () => {

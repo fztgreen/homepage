@@ -22,8 +22,13 @@ import {
   MatTabChangeEvent,
   MatTabsModule
 } from '@angular/material/tabs';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { interval } from 'rxjs';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterModule
+} from '@angular/router';
+import { filter, interval, map, startWith } from 'rxjs';
 import { svgs } from '../assets/svgs';
 import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
@@ -91,10 +96,15 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this._route.fragment
-      .pipe(takeUntilDestroyed(this._destroyRef))
-      .subscribe((fragment) => {
-        this.navigateToTabFromFragment(fragment);
+    this._router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        startWith(null),
+        map(() => this.activeTabPath()),
+        takeUntilDestroyed(this._destroyRef)
+      )
+      .subscribe((path) => {
+        this.selectTabNamed(path);
       });
 
     this.tab_num = this.tabs.length;
@@ -113,7 +123,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
   tabChange(tab: MatTabChangeEvent) {
     this.selected.set(tab.index);
-    this._router.navigate([], { fragment: tab.tab.textLabel });
+    this._router.navigate(['/', tab.tab.textLabel.toLowerCase()]);
   }
 
   setTheme(value: Pick<MatSlideToggleChange, 'checked'>) {
@@ -133,9 +143,13 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       ?.setAttribute('d', svgs.sun);
   }
 
-  private navigateToTabFromFragment(fragment: string | null) {
+  private activeTabPath(): string | undefined {
+    return this._route.firstChild?.snapshot.url[0]?.path;
+  }
+
+  private selectTabNamed(name: string | undefined) {
     const tab = this.tabs.find(
-      (x) => x.textLabel.toLowerCase() === fragment?.toLowerCase()
+      (x) => x.textLabel.toLowerCase() === name?.toLowerCase()
     );
 
     for (let x = 0; x < this.tabs.length; x++) {
