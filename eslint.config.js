@@ -58,6 +58,24 @@ module.exports = defineConfig([
     ],
     rules: {}
   },
+  {
+    files: ['**/*.spec.ts'],
+    rules: {
+      'no-restricted-globals': [
+        'error',
+        {
+          name: 'fdescribe',
+          message: 'A focused spec silently skips every other test.'
+        },
+        {
+          name: 'fit',
+          message: 'A focused spec silently skips every other test.'
+        },
+        { name: 'xdescribe', message: 'Fix or delete the skipped spec.' },
+        { name: 'xit', message: 'Fix or delete the skipped spec.' }
+      ]
+    }
+  },
   // Turns off every stylistic rule that Prettier owns, so the two never disagree.
   prettier,
   {
