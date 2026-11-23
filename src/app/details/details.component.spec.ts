@@ -17,6 +17,7 @@ describe('DetailsComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 });

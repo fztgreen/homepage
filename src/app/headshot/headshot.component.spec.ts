@@ -9,8 +9,7 @@ describe('HeadshotComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeadshotComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeadshotComponent);
     component = fixture.componentInstance;
@@ -18,6 +17,7 @@ describe('HeadshotComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 });

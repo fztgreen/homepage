@@ -4,16 +4,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { interval } from 'rxjs';
 
 @Component({
-    selector: 'app-game',
-    imports: [MatButtonModule],
-    templateUrl: './game.component.html',
-    styleUrl: './game.component.scss'
+  selector: 'app-game',
+  imports: [MatButtonModule],
+  templateUrl: './game.component.html',
+  styleUrl: './game.component.scss'
 })
 export class GameComponent {
-  destroyRef = inject(DestroyRef);
-  count: number = 0;
-  autoclickerTotal: number = 0;
-  buttonEnabled: boolean = true;
+  private _destroyRef = inject(DestroyRef);
+  count = 0;
+  autoclickerTotal = 0;
+  buttonEnabled = true;
 
   increment(): void {
     this.count += 1;
@@ -22,7 +22,7 @@ export class GameComponent {
   startAutoclicker(): void {
     this.buttonEnabled = false;
     interval(1000)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.count += 1;
         this.buttonEnabled = true;

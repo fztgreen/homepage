@@ -27,16 +27,19 @@ describe('NavigationComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 
   it('should correctly set amount of tabs', () => {
+    // Assert
     expect(component.tab_num).not.toBeUndefined();
     expect(component.tab_num).toBe(component.tabs.length);
   });
 
   describe('mobileView', () => {
     it('should default to false', () => {
+      // Assert
       expect(component.mobileView).toBeFalse();
     });
   });

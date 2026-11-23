@@ -25,6 +25,7 @@ describe('StoreComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 });

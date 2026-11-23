@@ -16,6 +16,7 @@ describe('PhotographyComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 });

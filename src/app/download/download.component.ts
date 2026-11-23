@@ -4,16 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 @Component({
-    selector: 'app-download',
-    imports: [MatButtonModule, MatListModule, MatIconModule],
-    templateUrl: './download.component.html',
-    styleUrl: './download.component.scss'
+  selector: 'app-download',
+  imports: [MatButtonModule, MatListModule, MatIconModule],
+  templateUrl: './download.component.html',
+  styleUrl: './download.component.scss'
 })
 export class DownloadComponent {
   file: File | undefined;
 
-  public uploadFile(event: any): void {
-    this.file = event.target.files[0];
+  public uploadFile(event: Event): void {
+    this.file = (event.target as HTMLInputElement).files?.[0];
     localStorage.setItem('upload', JSON.stringify(this.file));
   }
 

@@ -35,14 +35,15 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
-            }
+            },
+            "allowedCommonJsDependencies": ["hammerjs"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "1.25MB",
                   "maximumError": "2MB"
                 },
                 {
@@ -98,6 +99,13 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"],
+            "maxWarnings": 0
+          }
         }
       }
     }

@@ -5,12 +5,16 @@ import {
   ElementRef,
   inject,
   OnInit,
+  QueryList,
   ViewChild,
   ViewChildren
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+  MatSlideToggleChange,
+  MatSlideToggleModule
+} from '@angular/material/slide-toggle';
 import {
   MatTab,
   MatTabChangeEvent,
@@ -25,38 +29,36 @@ import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
 
 @Component({
-    selector: 'app-navigation',
-    imports: [
-        MatTabsModule,
-        DetailsComponent,
-        ContactComponent,
-        BlogComponent,
-        PhotographyComponent,
-        RouterModule,
-        MatIconModule,
-        MatSlideToggleModule
-    ],
-    templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.scss'
+  selector: 'app-navigation',
+  imports: [
+    MatTabsModule,
+    DetailsComponent,
+    ContactComponent,
+    BlogComponent,
+    PhotographyComponent,
+    RouterModule,
+    MatIconModule,
+    MatSlideToggleModule
+  ],
+  templateUrl: './navigation.component.html',
+  styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements AfterViewInit, OnInit {
-  destroyRef = inject(DestroyRef);
-  @ViewChildren(MatTab) tabs: any;
+  private _route = inject(ActivatedRoute);
+  private _router = inject(Router);
+
+  private _destroyRef = inject(DestroyRef);
+  @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
   tab_num = 0;
   selected = 0;
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
-  home: string = 'home';
-  darkModeToggleChecked: boolean = false;
-  mobileView: boolean = false;
+  home = 'home';
+  darkModeToggleChecked = false;
+  mobileView = false;
 
   @ViewChild('darkModeSwitch', { read: ElementRef }) darkModeToggle:
     | ElementRef
     | undefined;
-
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router
-  ) {}
 
   ngOnInit(): void {
     this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
@@ -68,7 +70,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
   private setupDarkModeListener() {
     interval(1000)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
         this.mobileView = document.body.offsetWidth < 700;
@@ -77,7 +79,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this._route.fragment
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe((fragment) => {
         this.navigateToTabFromFragment(fragment);
       });
@@ -86,7 +88,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
     this.swapDarkModeToggleIcons();
   }
 
-  swipe(eType: any) {
+  swipe(eType: string) {
     if (eType === this.SWIPE_ACTION.RIGHT && this.selected > 0) {
       this.selected--;
     } else if (
@@ -102,7 +104,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
     this._router.navigate([], { fragment: tab.tab.textLabel });
   }
 
-  setTheme(value: any) {
+  setTheme(value: Pick<MatSlideToggleChange, 'checked'>) {
     if (value.checked) {
       localStorage.setItem('theme', 'dark');
     } else {
@@ -122,12 +124,12 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   }
 
   private navigateToTabFromFragment(fragment: string | null) {
-    let tab = this.tabs.find((x: any): boolean => {
-      return x.textLabel.toLowerCase() == fragment?.toLowerCase();
-    });
+    const tab = this.tabs.find(
+      (x) => x.textLabel.toLowerCase() === fragment?.toLowerCase()
+    );
 
     for (let x = 0; x < this.tabs.length; x++) {
-      if (this.tabs.get(x) == tab) {
+      if (this.tabs.get(x) === tab) {
         this.selected = x;
       }
     }

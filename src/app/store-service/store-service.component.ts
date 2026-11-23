@@ -3,16 +3,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-store-service',
-    imports: [RouterModule],
-    templateUrl: './store-service.component.html',
-    styleUrl: './store-service.component.scss'
+  selector: 'app-store-service',
+  imports: [RouterModule],
+  templateUrl: './store-service.component.html',
+  styleUrl: './store-service.component.scss'
 })
 export class StoreServiceComponent implements OnInit {
-  _destroyRef: DestroyRef = inject(DestroyRef);
-  name!: string;
+  private _route = inject(ActivatedRoute);
 
-  constructor(private _route: ActivatedRoute) {}
+  private _destroyRef = inject(DestroyRef);
+  name!: string;
 
   ngOnInit(): void {
     this._route.url

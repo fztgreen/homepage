@@ -1,4 +1,4 @@
-import { Component, DestroyRef, DoCheck, inject, OnInit } from '@angular/core';
+import { Component, DoCheck, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
@@ -6,24 +6,23 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-store',
-    imports: [
-        RouterModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatDividerModule
-    ],
-    templateUrl: './store.component.html',
-    styleUrl: './store.component.scss'
+  selector: 'app-store',
+  imports: [
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule
+  ],
+  templateUrl: './store.component.html',
+  styleUrl: './store.component.scss'
 })
 export class StoreComponent implements OnInit, DoCheck {
-  _destroyRef: DestroyRef = inject(DestroyRef);
+  private _router = inject(Router);
+
   products: MenuEntry[] = [];
   services: MenuEntry[] = [];
   isBaseStorePage!: boolean;
-
-  constructor(private _router: Router) {}
 
   ngOnInit(): void {
     this.products = [
@@ -40,7 +39,7 @@ export class StoreComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.isBaseStorePage =
-      this._router.url.split('/')[this._router.url.split('/').length - 1] ==
+      this._router.url.split('/')[this._router.url.split('/').length - 1] ===
       'store';
   }
 }

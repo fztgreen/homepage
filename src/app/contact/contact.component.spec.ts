@@ -30,6 +30,7 @@ describe('ContactComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 

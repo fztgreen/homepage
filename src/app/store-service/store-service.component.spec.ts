@@ -20,6 +20,7 @@ describe('StoreServiceComponent', () => {
   });
 
   it('should create', () => {
+    // Assert
     expect(component).toBeTruthy();
   });
 });
