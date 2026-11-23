@@ -9,11 +9,11 @@ This is a personal homepage built with Angular 21 and Angular Material, followin
 ```bash
 npm ci                  # install; fails unless Node 24 / npm 11 (engine-strict)
 npm start               # dev server on http://localhost:4200
-npm run verify          # format check, lint, build, tests: what CI runs
+npm run verify          # format check, lint, build, tests
 npm run build           # production build; any warning fails it
 npm run lint            # angular-eslint; warnings fail it
 npm run format          # Prettier, rewriting files
-npm run test:ci         # Karma once, headless Chrome
+npm run test:once         # Karma once, headless Chrome
 ```
 
 ## Working Rules for Claude

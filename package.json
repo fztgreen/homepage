@@ -10,8 +10,9 @@
     "lint": "ng lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
-    "verify": "npm run format:check && npm run lint && npm run build && npm run test:ci"
+    "test:once": "ng test --watch=false --browsers=ChromeHeadless",
+    "audit:prod": "npm audit --omit=dev --audit-level=high",
+    "verify": "npm run format:check && npm run lint && npm run build && npm run test:once"
   },
   "private": true,
   "engines": {

@@ -43,7 +43,7 @@ Tests are stricter: only the `// Arrange`, `// Act`, `// Assert` markers are all
 
 ## Build Configuration
 
-Every check runs in CI and fails on warnings as well as errors. Each tool owns one concern:
+Every check runs in `npm run verify` and fails on warnings as well as errors. Each tool owns one concern:
 
 | Concern                                  | Configured in                                                       | Enforced by                 |
 | ---------------------------------------- | ------------------------------------------------------------------- | --------------------------- |
@@ -54,7 +54,7 @@ Every check runs in CI and fails on warnings as well as errors. Each tool owns o
 | Build warnings (budgets, CommonJS, Sass) | `angular.json`, `scripts/build-without-warnings.mjs`                | `npm run build`             |
 
 - **Node.** `engine-strict` makes `npm install` fail on any Node major other than 24 or any npm major other than 11. Bump `engines` and `.nvmrc` together.
-- **Line endings.** `.gitattributes` stores and checks out every text file with LF, on Windows too, so Prettier's `endOfLine` check matches in CI and locally.
+- **Line endings.** `.gitattributes` stores and checks out every text file with LF, on Windows too, so Prettier's `endOfLine` check gives the same result on every machine.
 - **TypeScript** runs in `strict` mode with `noUnusedLocals`, `noUnusedParameters`, `noImplicitReturns`, `noImplicitOverride` and `noPropertyAccessFromIndexSignature`. **Angular** runs with `strictTemplates`, and `extendedDiagnostics.defaultCategory` is `error`, so diagnostics such as a needless `??` (NG8102) fail the build.
 - **Build warnings are errors.** The Angular CLI has no switch for this, so `npm run build` runs `ng build` through `scripts/build-without-warnings.mjs`, which fails when the output contains `[WARNING]`.
 - **Known exceptions, each with its reason:**

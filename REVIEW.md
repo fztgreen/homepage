@@ -6,7 +6,7 @@ Use this checklist when reviewing changes. Each item traces back to a rule in [C
 
 ## Enforced Automatically
 
-These rules fail `npm run verify` and the CI build, so a green build covers them. Don't spend review time re-checking them. Instead, make sure nobody weakened the rule that enforces them (e.g. an `eslint-disable` comment, a rule turned off in `eslint.config.js`, a raised budget, a relaxed `tsconfig.json` flag, or a new `allowedCommonJsDependencies` entry).
+These rules fail `npm run verify`, so a green run covers them. Don't spend review time re-checking them. Instead, make sure nobody weakened the rule that enforces them (e.g. an `eslint-disable` comment, a rule turned off in `eslint.config.js`, a raised budget, a relaxed `tsconfig.json` flag, or a new `allowedCommonJsDependencies` entry).
 
 | Rule                                                                                                | Enforced by                                                                                     |
 | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -22,7 +22,7 @@ These rules fail `npm run verify` and the CI build, so a green build covers them
 | Lint warnings count as failures                                                                     | `maxWarnings: 0` in `angular.json`                                                              |
 | Strict types and templates, no unused locals or parameters, extended template diagnostics as errors | `tsconfig.json`                                                                                 |
 | No build warnings (bundle budgets, CommonJS modules, Sass deprecations, …)                          | `npm run build` (`scripts/build-without-warnings.mjs`)                                          |
-| No high-severity advisories in the dependencies that ship to the browser                            | CI (`npm audit --omit=dev --audit-level=high`)                                                  |
+| No high-severity advisories in the dependencies that ship to the browser                            | `npm run audit:prod` (`npm audit --omit=dev --audit-level=high`)                                |
 
 ## Structure & Conventions
 

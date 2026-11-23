@@ -6,7 +6,7 @@
 
 ```bash
 npm test             # Karma in watch mode: reruns on every save
-npm run test:ci      # one run in headless Chrome, as CI does
+npm run test:once      # one run in headless Chrome
 npm run verify       # format check, lint, build, then tests
 ```
 
