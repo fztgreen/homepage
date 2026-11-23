@@ -27,6 +27,7 @@ describe('ProjectsComponent', () => {
 
   afterEach(() => {
     httpTestingController.verify();
+    document.body.style.width = '';
   });
 
   function randomReadme(): string {
@@ -81,6 +82,22 @@ describe('ProjectsComponent', () => {
       expect(component.currentProject).toBe(project);
       expect(component.readme).toBe(readme);
       expect(component.loadingReadme).toBeFalse();
+    });
+  });
+
+  describe('mobileView', () => {
+    it('should be true when the page is exactly the mobile width', () => {
+      // Arrange
+      respondWithReadme(component.projects[0].readmeUrl, randomReadme());
+      document.body.style.width = '700px';
+
+      // Act
+      const narrowFixture = TestBed.createComponent(ProjectsComponent);
+      narrowFixture.detectChanges();
+      respondWithReadme(component.projects[0].readmeUrl, randomReadme());
+
+      // Assert
+      expect(narrowFixture.componentInstance.mobileView).toBeTrue();
     });
   });
 });

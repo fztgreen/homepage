@@ -29,6 +29,7 @@ import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
+import { ViewportService } from '../viewport.service';
 
 @Component({
   selector: 'app-navigation',
@@ -48,6 +49,7 @@ import { PhotographyComponent } from '../photography/photography.component';
 export class NavigationComponent implements AfterViewInit, OnInit {
   private _route = inject(ActivatedRoute);
   private _router = inject(Router);
+  private _viewport = inject(ViewportService);
 
   private _destroyRef = inject(DestroyRef);
   @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
@@ -74,7 +76,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
 
-    this.mobileView = document.body.offsetWidth < 700;
+    this.mobileView = this._viewport.isMobileView();
 
     this.setupDarkModeListener();
   }
@@ -84,7 +86,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
-        this.mobileView = document.body.offsetWidth < 700;
+        this.mobileView = this._viewport.isMobileView();
       });
   }
 

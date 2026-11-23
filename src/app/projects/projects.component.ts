@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { interval, take } from 'rxjs';
 import { GithubService } from '../github.service';
+import { ViewportService } from '../viewport.service';
 import { Project } from './models/project.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -23,10 +24,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class ProjectsComponent implements OnInit {
   private _github = inject(GithubService);
+  private _viewport = inject(ViewportService);
 
   private _destroyRef = inject(DestroyRef);
   readme!: string;
-  mobileView: boolean = document.body.offsetWidth < 700;
+  mobileView: boolean = this._viewport.isMobileView();
 
   readonly projects: Project[] = [
     {
@@ -107,7 +109,7 @@ export class ProjectsComponent implements OnInit {
     interval(500)
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
-        this.mobileView = document.body.offsetWidth <= 700;
+        this.mobileView = this._viewport.isMobileView();
       });
   }
 

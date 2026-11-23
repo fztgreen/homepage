@@ -35,6 +35,10 @@ describe('NavigationComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    document.body.style.width = '';
+  });
+
   function switchIconPath(state: 'on' | 'off'): string | null | undefined {
     return (fixture.nativeElement as HTMLElement)
       .querySelector(`.theme-toggle .mdc-switch__icon--${state} path`)
@@ -93,6 +97,18 @@ describe('NavigationComponent', () => {
     it('should default to false', () => {
       // Assert
       expect(component.mobileView).toBeFalse();
+    });
+
+    it('should be true when the page is exactly the mobile width', () => {
+      // Arrange
+      document.body.style.width = '700px';
+
+      // Act
+      const narrowFixture = TestBed.createComponent(NavigationComponent);
+      narrowFixture.detectChanges();
+
+      // Assert
+      expect(narrowFixture.componentInstance.mobileView).toBeTrue();
     });
   });
 
