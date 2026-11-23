@@ -39,22 +39,24 @@ describe('routes', () => {
     });
   }
 
-  function randomCasing(text: string): string {
-    return [...text]
-      .map((letter) =>
+  function notLowercase(text: string): string {
+    const [first, ...rest] = [...text];
+    return [
+      first.toUpperCase(),
+      ...rest.map((letter) =>
         Random.Boolean() ? letter.toUpperCase() : letter.toLowerCase()
       )
-      .join('');
+    ].join('');
   }
 
   describe('home sections', () => {
-    it('should redirect a section path in any casing to its home section', async () => {
+    it('should redirect a section path that is not lowercase to its home section', async () => {
       // Arrange
       const section = randomHomeSection();
 
       // Act
       await harness.navigateByUrl(
-        `/${randomCasing(section)}`,
+        `/${notLowercase(section)}`,
         NavigationComponent
       );
 

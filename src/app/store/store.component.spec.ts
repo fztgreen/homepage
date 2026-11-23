@@ -25,12 +25,14 @@ describe('StoreComponent', () => {
     });
   }
 
-  function randomCasing(text: string): string {
-    return [...text]
-      .map((letter) =>
+  function notLowercase(text: string): string {
+    const [first, ...rest] = [...text];
+    return [
+      first.toUpperCase(),
+      ...rest.map((letter) =>
         Random.Boolean() ? letter.toUpperCase() : letter.toLowerCase()
       )
-      .join('');
+    ].join('');
   }
 
   function showsWelcomeMessage(): boolean {
@@ -77,7 +79,7 @@ describe('StoreComponent', () => {
 
     it('should show the welcome message when the path is not lowercase', async () => {
       // Act
-      await harness.navigateByUrl(`/${randomCasing('STORE')}`, StoreComponent);
+      await harness.navigateByUrl(`/${notLowercase('store')}`, StoreComponent);
 
       // Assert
       expect(showsWelcomeMessage()).toBeTrue();
