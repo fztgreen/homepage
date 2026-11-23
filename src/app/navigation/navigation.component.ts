@@ -1,4 +1,5 @@
 import {
+  afterRenderEffect,
   AfterViewInit,
   Component,
   DestroyRef,
@@ -6,7 +7,8 @@ import {
   inject,
   OnInit,
   QueryList,
-  ViewChild,
+  signal,
+  viewChild,
   ViewChildren
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -27,6 +29,7 @@ import { BlogComponent } from '../blog/blog.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailsComponent } from '../details/details.component';
 import { PhotographyComponent } from '../photography/photography.component';
+import { ViewportService } from '../viewport.service';
 
 @Component({
   selector: 'app-navigation',
@@ -46,24 +49,34 @@ import { PhotographyComponent } from '../photography/photography.component';
 export class NavigationComponent implements AfterViewInit, OnInit {
   private _route = inject(ActivatedRoute);
   private _router = inject(Router);
+  private _viewport = inject(ViewportService);
 
   private _destroyRef = inject(DestroyRef);
   @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
   tab_num = 0;
-  selected = 0;
+  selected = signal(0);
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
   home = 'home';
   darkModeToggleChecked = false;
   mobileView = false;
 
-  @ViewChild('darkModeSwitch', { read: ElementRef }) darkModeToggle:
-    | ElementRef
-    | undefined;
+  private _darkModeToggle = viewChild('darkModeSwitch', { read: ElementRef });
+
+  // The switch is in the mobile-only Settings tab, so it can appear long after
+  // the first render; swap its icons each time it does.
+  constructor() {
+    afterRenderEffect(() => {
+      const toggle = this._darkModeToggle();
+      if (toggle) {
+        this.swapDarkModeToggleIcons(toggle.nativeElement);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
 
-    this.mobileView = document.body.offsetWidth < 700;
+    this.mobileView = this._viewport.isMobileView();
 
     this.setupDarkModeListener();
   }
@@ -73,7 +86,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
         this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
-        this.mobileView = document.body.offsetWidth < 700;
+        this.mobileView = this._viewport.isMobileView();
       });
   }
 
@@ -85,22 +98,21 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       });
 
     this.tab_num = this.tabs.length;
-    this.swapDarkModeToggleIcons();
   }
 
   swipe(eType: string) {
-    if (eType === this.SWIPE_ACTION.RIGHT && this.selected > 0) {
-      this.selected--;
+    if (eType === this.SWIPE_ACTION.RIGHT && this.selected() > 0) {
+      this.selected.update((index) => index - 1);
     } else if (
       eType === this.SWIPE_ACTION.LEFT &&
-      this.selected < this.tab_num - 1
+      this.selected() < this.tab_num - 1
     ) {
-      this.selected++;
+      this.selected.update((index) => index + 1);
     }
   }
 
   tabChange(tab: MatTabChangeEvent) {
-    this.selected = tab.index;
+    this.selected.set(tab.index);
     this._router.navigate([], { fragment: tab.tab.textLabel });
   }
 
@@ -112,15 +124,13 @@ export class NavigationComponent implements AfterViewInit, OnInit {
     }
   }
 
-  private swapDarkModeToggleIcons() {
-    if (this.darkModeToggle) {
-      this.darkModeToggle.nativeElement
-        .querySelector('.mdc-switch__icon--on')
-        .firstChild.setAttribute('d', svgs.moon);
-      this.darkModeToggle.nativeElement
-        .querySelector('.mdc-switch__icon--off')
-        .firstChild.setAttribute('d', svgs.sun);
-    }
+  private swapDarkModeToggleIcons(toggle: HTMLElement) {
+    toggle
+      .querySelector('.mdc-switch__icon--on path')
+      ?.setAttribute('d', svgs.moon);
+    toggle
+      .querySelector('.mdc-switch__icon--off path')
+      ?.setAttribute('d', svgs.sun);
   }
 
   private navigateToTabFromFragment(fragment: string | null) {
@@ -130,7 +140,7 @@ export class NavigationComponent implements AfterViewInit, OnInit {
 
     for (let x = 0; x < this.tabs.length; x++) {
       if (this.tabs.get(x) === tab) {
-        this.selected = x;
+        this.selected.set(x);
       }
     }
   }

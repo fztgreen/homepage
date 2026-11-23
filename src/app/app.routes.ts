@@ -12,24 +12,20 @@ import { StoreComponent } from './store/store.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    matcher: (url) => AllCaseMatcher(url, 'details'),
-    redirectTo: '/home#details',
-    pathMatch: 'full'
+    matcher: (url) => AllCaseWholeUrlMatcher(url, 'details'),
+    redirectTo: '/home#details'
   },
   {
-    matcher: (url) => AllCaseMatcher(url, 'contact'),
-    redirectTo: '/home#contact',
-    pathMatch: 'full'
+    matcher: (url) => AllCaseWholeUrlMatcher(url, 'contact'),
+    redirectTo: '/home#contact'
   },
   {
-    matcher: (url) => AllCaseMatcher(url, 'photography'),
-    redirectTo: '/home#photography',
-    pathMatch: 'full'
+    matcher: (url) => AllCaseWholeUrlMatcher(url, 'photography'),
+    redirectTo: '/home#photography'
   },
   {
-    matcher: (url) => AllCaseMatcher(url, 'blog'),
-    redirectTo: '/home#blog',
-    pathMatch: 'full'
+    matcher: (url) => AllCaseWholeUrlMatcher(url, 'blog'),
+    redirectTo: '/home#blog'
   },
   {
     matcher: (url) => AllCaseMatcher(url, 'home'),
@@ -74,4 +70,17 @@ function AllCaseMatcher(
   }
 
   return null;
+}
+
+// pathMatch does not apply to custom matchers, and an absolute redirect drops
+// unconsumed segments, so a redirect route must reject them itself.
+function AllCaseWholeUrlMatcher(
+  urlsegments: UrlSegment[],
+  endpoint: string
+): UrlMatchResult | null {
+  if (urlsegments.length !== 1) {
+    return null;
+  }
+
+  return AllCaseMatcher(urlsegments, endpoint);
 }

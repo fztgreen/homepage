@@ -14,7 +14,6 @@ export class DownloadComponent {
 
   public uploadFile(event: Event): void {
     this.file = (event.target as HTMLInputElement).files?.[0];
-    localStorage.setItem('upload', JSON.stringify(this.file));
   }
 
   public downloadFile(): void {
