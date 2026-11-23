@@ -1,4 +1,5 @@
 import {
+  afterRenderEffect,
   AfterViewInit,
   Component,
   DestroyRef,
@@ -7,7 +8,7 @@ import {
   OnInit,
   QueryList,
   signal,
-  ViewChild,
+  viewChild,
   ViewChildren
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -57,9 +58,18 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   darkModeToggleChecked = false;
   mobileView = false;
 
-  @ViewChild('darkModeSwitch', { read: ElementRef }) darkModeToggle:
-    | ElementRef
-    | undefined;
+  private _darkModeToggle = viewChild('darkModeSwitch', { read: ElementRef });
+
+  // The switch is in the mobile-only Settings tab, so it can appear long after
+  // the first render; swap its icons each time it does.
+  constructor() {
+    afterRenderEffect(() => {
+      const toggle = this._darkModeToggle();
+      if (toggle) {
+        this.swapDarkModeToggleIcons(toggle.nativeElement);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.darkModeToggleChecked = localStorage.getItem('theme') === 'dark';
@@ -86,7 +96,6 @@ export class NavigationComponent implements AfterViewInit, OnInit {
       });
 
     this.tab_num = this.tabs.length;
-    this.swapDarkModeToggleIcons();
   }
 
   swipe(eType: string) {
@@ -113,15 +122,13 @@ export class NavigationComponent implements AfterViewInit, OnInit {
     }
   }
 
-  private swapDarkModeToggleIcons() {
-    if (this.darkModeToggle) {
-      this.darkModeToggle.nativeElement
-        .querySelector('.mdc-switch__icon--on')
-        .firstChild.setAttribute('d', svgs.moon);
-      this.darkModeToggle.nativeElement
-        .querySelector('.mdc-switch__icon--off')
-        .firstChild.setAttribute('d', svgs.sun);
-    }
+  private swapDarkModeToggleIcons(toggle: HTMLElement) {
+    toggle
+      .querySelector('.mdc-switch__icon--on path')
+      ?.setAttribute('d', svgs.moon);
+    toggle
+      .querySelector('.mdc-switch__icon--off path')
+      ?.setAttribute('d', svgs.sun);
   }
 
   private navigateToTabFromFragment(fragment: string | null) {

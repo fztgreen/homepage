@@ -1,11 +1,18 @@
 import { provideHttpClient } from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  discardPeriodicTasks,
+  fakeAsync,
+  TestBed,
+  tick
+} from '@angular/core/testing';
 import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { Random } from 'random-test-values';
 import { routes } from '../app.routes';
+import { svgs } from '../assets/svgs';
 import { NavigationComponent } from './navigation.component';
 
 describe('NavigationComponent', () => {
@@ -27,6 +34,12 @@ describe('NavigationComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  function switchIconPath(state: 'on' | 'off'): string | null | undefined {
+    return (fixture.nativeElement as HTMLElement)
+      .querySelector(`.theme-toggle .mdc-switch__icon--${state} path`)
+      ?.getAttribute('d');
+  }
 
   it('should create', () => {
     // Assert
@@ -55,6 +68,25 @@ describe('NavigationComponent', () => {
       // Assert
       expect(navigation.selected()).toBe(index);
     });
+  });
+
+  describe('darkModeToggle', () => {
+    it('should show the moon and sun icons when the settings tab opens on mobile', fakeAsync(() => {
+      // Arrange
+      component.mobileView = true;
+      fixture.detectChanges();
+
+      // Act
+      component.selected.set(component.tabs.length - 1);
+      fixture.detectChanges();
+      tick(1000);
+      fixture.detectChanges();
+      discardPeriodicTasks();
+
+      // Assert
+      expect(switchIconPath('on')).toBe(svgs.moon);
+      expect(switchIconPath('off')).toBe(svgs.sun);
+    }));
   });
 
   describe('mobileView', () => {
