@@ -13,7 +13,7 @@ npm run verify          # format check, lint, build, tests
 npm run build           # production build; any warning fails it
 npm run lint            # angular-eslint; warnings fail it
 npm run format          # Prettier, rewriting files
-npm run test:once         # Karma once, headless Chrome
+npm run test:once       # Karma once, headless Chrome
 ```
 
 ## Working Rules for Claude

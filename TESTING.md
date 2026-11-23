@@ -6,7 +6,7 @@
 
 ```bash
 npm test             # Karma in watch mode: reruns on every save
-npm run test:once      # one run in headless Chrome
+npm run test:once    # one run in headless Chrome
 npm run verify       # format check, lint, build, then tests
 ```
 
@@ -68,7 +68,7 @@ If a test passes immediately and no change to the code makes it fail, it isn't c
 - Declare test values with `const`.
 
 ```typescript
-it("should increase count by 1", () => {
+it('should increase count by 1', () => {
   // Arrange
   const startingCount = Random.Number({ min: 0 });
   component.count = startingCount;
