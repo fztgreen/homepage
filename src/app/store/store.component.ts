@@ -1,9 +1,9 @@
-import { Component, DoCheck, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -17,12 +17,11 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss'
 })
-export class StoreComponent implements OnInit, DoCheck {
-  private _router = inject(Router);
+export class StoreComponent implements OnInit {
+  private _route = inject(ActivatedRoute);
 
   products: MenuEntry[] = [];
   services: MenuEntry[] = [];
-  isBaseStorePage!: boolean;
 
   ngOnInit(): void {
     this.products = [
@@ -37,10 +36,8 @@ export class StoreComponent implements OnInit, DoCheck {
     ];
   }
 
-  ngDoCheck(): void {
-    this.isBaseStorePage =
-      this._router.url.split('/')[this._router.url.split('/').length - 1] ===
-      'store';
+  get isBaseStorePage(): boolean {
+    return this._route.firstChild === null;
   }
 }
 
